@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sidy Barham Ndao - Portfolio Génie Logiciel</title>
+    <title>Sidy Barham Ndao | Portfolio</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -31,34 +29,40 @@
         }
     </script>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
 
     <style>
-        /* =========================
-           PHOTO
-        ========================= */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
         .mirrored-photo {
             transform: scaleX(-1);
         }
 
         .photo-card-shadow {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
         }
 
-        .dark .photo-card-shadow {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
+        .floating-popup {
+            animation: floating 3s ease-in-out infinite;
         }
 
-        /* =========================
-           POPUP PHOTO
-        ========================= */
-
-        @keyframes floatingPopup {
-
-            0%,
-            100% {
+        @keyframes floating {
+            0%, 100% {
                 transform: translateY(0);
             }
 
@@ -67,66 +71,36 @@
             }
         }
 
-        .floating-popup {
-            animation: floatingPopup 3s ease-in-out infinite;
-        }
-
-        /* =========================
-           MOBILE MENU
-        ========================= */
-
-        #mobile-menu {
-            transition:
-                max-height 0.35s ease,
-                opacity 0.3s ease,
-                transform 0.3s ease;
+        .mobile-menu {
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transform: translateY(-10px);
+            transition: max-height 0.4s ease, opacity 0.3s ease;
         }
 
-        #mobile-menu.active {
-            max-height: 700px;
+        .mobile-menu.open {
+            max-height: 500px;
             opacity: 1;
-            transform: translateY(0);
         }
-
-        /* =========================
-           WHATSAPP POPUP
-        ========================= */
-
-        #popup-card {
-            transition:
-                opacity 0.3s ease,
-                transform 0.3s ease,
-                visibility 0.3s ease;
-        }
-
-        #popup-card.hidden-popup {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(15px);
-            pointer-events: none;
-        }
-
-        /* =========================
-           TOAST
-        ========================= */
-
-        #toast {
-            transition:
-                opacity 0.3s ease,
-                transform 0.3s ease;
-        }
-
-        /* =========================
-           EXPERIENCE CAROUSEL
-        ========================= */
 
         .experience-carousel {
             overflow: hidden;
             position: relative;
+            cursor: grab;
+            user-select: none;
+            touch-action: pan-y;
+        }
+
+        .experience-carousel:active {
+            cursor: grabbing;
+        }
+
+        .experience-carousel.dragging {
+            cursor: grabbing;
+        }
+
+        .experience-carousel.dragging .experience-track {
+            transition: none !important;
         }
 
         .experience-track {
@@ -137,29 +111,42 @@
 
         .experience-card {
             flex: 0 0 390px;
+            width: 390px;
             margin-right: 24px;
         }
 
         @media (max-width: 768px) {
             .experience-card {
                 flex: 0 0 310px;
+                width: 310px;
             }
         }
 
-        /* =========================
-           SCROLLBAR
-        ========================= */
+        .project-link {
+            transition: all 0.3s ease;
+        }
 
+        .project-link:hover {
+            transform: translateX(4px);
+        }
+
+        /* =========================================================
+           ICÔNES EN BLANC EN MODE SOMBRE
+           ========================================================= */
+
+        .dark .bg-burgundy-100 i,
+        .dark .bg-burgundy-900\/40 i {
+            color: #ffffff !important;
+        }
+
+        /* Barre de défilement */
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #f3f4f6;
-        }
-
-        .dark ::-webkit-scrollbar-track {
-            background: #111827;
+            background: #f1f1f1;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -167,304 +154,233 @@
             border-radius: 10px;
         }
 
-
-        /* Cacher le popup de la photo sur mobile */
-        @media (max-width: 767px) {
-            .floating-popup {
-                display: none !important;
-            }
+        .dark ::-webkit-scrollbar-track {
+            background: #1f1f1f;
         }
 
-        /* =========================
-           TRANSITIONS
-        ========================= */
+        .dark ::-webkit-scrollbar-thumb {
+            background: #800020;
+        }
 
-        html,
-        body,
-        header,
-        section,
-        footer,
-        nav,
-        div,
-        article,
-        input,
-        textarea,
-        button {
-            transition:
-                background-color 0.3s ease,
-                color 0.3s ease,
-                border-color 0.3s ease;
+        .toast {
+            transform: translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .whatsapp-popup {
+            opacity: 0;
+            transform: translateY(15px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-popup.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        @media (max-width: 768px) {
+            .floating-popup {
+                display: none;
+            }
         }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans">
+<body class="bg-white text-gray-900 dark:bg-gray-950 dark:text-white">
 
-    <!-- =====================================================
+    <!-- =========================================================
          HEADER
-    ====================================================== -->
+         ========================================================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
 
-    <header
-        class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-
-        <div class="max-w-6xl mx-auto px-4">
-
-            <div class="h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="h-[70px] flex items-center justify-between">
 
                 <!-- LOGO -->
-                <a href="#accueil" class="flex items-center gap-3">
+                <a href="#accueil"
+                   class="flex items-center gap-3 font-bold text-xl text-burgundy-600 dark:text-white">
 
-                    <div
-                        class="w-12 h-12 rounded-full bg-burgundy-600 text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                    <div class="w-11 h-11 rounded-xl bg-burgundy-600 text-white flex items-center justify-center font-bold">
                         SB
                     </div>
 
-                    <div class="hidden sm:block">
-                        <h1 class="font-bold text-lg text-gray-900 dark:text-white">
-                            Sidy Barham Ndao
-                        </h1>
-
-                        <p class="text-xs text-gray-500 dark:text-gray-400">
-                            Portfolio — Génie Logiciel
-                        </p>
-                    </div>
-
+                    <span class="hidden sm:block">
+                        Sidy Barham Ndao
+                    </span>
                 </a>
 
-
-                <!-- DESKTOP NAVIGATION -->
-                <nav id="z5l19u" class="hidden lg:flex items-center space-x-8 font-medium">
+                <!-- NAVIGATION DESKTOP -->
+                <nav class="hidden md:flex items-center gap-8">
 
                     <a href="#accueil"
-                        class="text-gray-700 dark:text-gray-200 hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
+                       class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
                         Accueil
                     </a>
 
                     <a href="#services"
-                        class="text-gray-700 dark:text-gray-200 hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
+                       class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
                         Services & Compétences
                     </a>
 
                     <a href="#experience"
-                        class="text-gray-700 dark:text-gray-200 hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
+                       class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
                         Expérience
                     </a>
 
                     <a href="#contact"
-                        class="text-gray-700 dark:text-gray-200 hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
+                       class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
                         Contact
+                    </a>
+
+                    <!-- THEME -->
+                    <button
+                        id="theme-toggle"
+                        type="button"
+                        aria-label="Changer le thème"
+                        class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-burgundy-100 dark:hover:bg-burgundy-900 transition">
+
+                        <i id="theme-icon" class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <a href="#contact"
+                       class="px-5 py-2.5 rounded-lg bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">
+                        Me contacter
                     </a>
 
                 </nav>
 
+                <!-- MOBILE ACTIONS -->
+                <div class="flex items-center gap-3 md:hidden">
 
-                <!-- HEADER ACTIONS -->
-                <div class="flex items-center gap-3">
+                    <button
+                        id="mobile-theme-toggle"
+                        type="button"
+                        aria-label="Changer le thème"
+                        class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
 
-                    <!-- THEME DESKTOP -->
-                    <button id="theme-toggle" type="button" aria-label="Changer le thème" class="w-10 h-10 rounded-full flex items-center justify-center
-                        bg-gray-100 dark:bg-gray-800
-                        text-gray-700 dark:text-yellow-300
-                        hover:bg-gray-200 dark:hover:bg-gray-700
-                        transition">
-
-                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-lg"></i>
-
-                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-lg"></i>
-
+                        <i id="mobile-theme-icon" class="fa-solid fa-moon"></i>
                     </button>
 
+                    <button
+                        id="menu-toggle"
+                        type="button"
+                        aria-label="Ouvrir le menu"
+                        class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
 
-                    <!-- CONTACT DESKTOP -->
-                    <a href="#contact" class="hidden sm:inline-flex lg:inline-flex
-                        px-5 py-2.5 rounded-lg
-                        bg-burgundy-600 hover:bg-burgundy-700
-                        text-white font-semibold
-                        transition shadow-md">
-                        Contactez-moi
-                    </a>
-
-
-                    <!-- BURGER -->
-                    <button id="mobile-menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
-                        class="lg:hidden w-10 h-10 rounded-lg
-                        bg-gray-100 dark:bg-gray-800
-                        text-gray-800 dark:text-white
-                        flex items-center justify-center">
-
-                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
-
+                        <i id="menu-icon" class="fa-solid fa-bars"></i>
                     </button>
 
                 </div>
 
             </div>
 
+            <!-- MENU MOBILE -->
+            <div id="mobile-menu" class="mobile-menu md:hidden">
 
-            <!-- =================================================
-                 MOBILE / TABLET MENU
-            ================================================== -->
+                <nav class="py-5 flex flex-col gap-4 border-t border-gray-200 dark:border-gray-800">
 
-            <div id="mobile-menu" class="lg:hidden border-t border-gray-200 dark:border-gray-800">
-
-                <div class="py-5 space-y-2">
-
-                    <a href="#accueil" class="mobile-nav-link block px-4 py-3 rounded-lg
-                        text-gray-700 dark:text-gray-200
-                        hover:bg-gray-100 dark:hover:bg-gray-800
-                        hover:text-burgundy-600 dark:hover:text-burgundy-400">
-                        <i class="fa-solid fa-house mr-3"></i>
+                    <a href="#accueil"
+                       class="mobile-link py-2 font-medium hover:text-burgundy-600">
                         Accueil
                     </a>
 
-                    <a href="#services" class="mobile-nav-link block px-4 py-3 rounded-lg
-                        text-gray-700 dark:text-gray-200
-                        hover:bg-gray-100 dark:hover:bg-gray-800
-                        hover:text-burgundy-600 dark:hover:text-burgundy-400">
-                        <i class="fa-solid fa-code mr-3"></i>
+                    <a href="#services"
+                       class="mobile-link py-2 font-medium hover:text-burgundy-600">
                         Services & Compétences
                     </a>
 
-                    <a href="#experience" class="mobile-nav-link block px-4 py-3 rounded-lg
-                        text-gray-700 dark:text-gray-200
-                        hover:bg-gray-100 dark:hover:bg-gray-800
-                        hover:text-burgundy-600 dark:hover:text-burgundy-400">
-                        <i class="fa-solid fa-briefcase mr-3"></i>
+                    <a href="#experience"
+                       class="mobile-link py-2 font-medium hover:text-burgundy-600">
                         Expérience
                     </a>
 
-                    <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-lg
-                        text-gray-700 dark:text-gray-200
-                        hover:bg-gray-100 dark:hover:bg-gray-800
-                        hover:text-burgundy-600 dark:hover:text-burgundy-400">
-                        <i class="fa-solid fa-envelope mr-3"></i>
+                    <a href="#contact"
+                       class="mobile-link py-2 font-medium hover:text-burgundy-600">
                         Contact
                     </a>
 
-
-                    <!-- MOBILE THEME -->
-                    <button id="mobile-theme-toggle" type="button" class="w-full flex items-center px-4 py-3 rounded-lg
-                        text-gray-700 dark:text-gray-200
-                        hover:bg-gray-100 dark:hover:bg-gray-800">
-
-                        <i id="mobile-theme-icon" class="fa-solid fa-moon mr-3"></i>
-
-                        <span id="mobile-theme-text">
-                            Mode sombre
-                        </span>
-
-                    </button>
-
-
-                    <a href="#contact" class="mobile-nav-link block mx-4 mt-3
-                        text-center px-5 py-3 rounded-lg
-                        bg-burgundy-600 hover:bg-burgundy-700
-                        text-white font-semibold shadow-md">
-                        Contactez-moi
+                    <a href="#contact"
+                       class="mobile-link mt-2 text-center px-5 py-3 rounded-lg bg-burgundy-600 text-white font-semibold">
+                        Me contacter
                     </a>
 
-                </div>
+                </nav>
 
             </div>
-
         </div>
-
     </header>
 
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
     <main>
 
+        <section id="accueil"
+                 class="min-h-screen flex items-center pt-28 pb-16">
 
-        <!-- =================================================
-             HERO
-        ================================================== -->
+            <div class="max-w-7xl mx-auto px-5 w-full">
 
-        <section id="accueil" class="min-h-screen pt-32 pb-20
-            bg-gray-50 dark:bg-gray-900">
+                <div class="grid lg:grid-cols-2 gap-14 items-center">
 
-            <div class="max-w-6xl mx-auto px-4">
-
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-
-                    <!-- TEXT -->
+                    <!-- TEXTE -->
                     <div>
 
-                        <div class="inline-flex items-center gap-2
-                            px-4 py-2 rounded-full
-                            bg-burgundy-50 dark:bg-burgundy-900/30
-                            text-burgundy-700 dark:text-burgundy-300
-                            text-sm font-semibold mb-6">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-700 dark:text-burgundy-300 text-sm font-semibold mb-6">
 
-                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse">
-                            </span>
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
 
                             Étudiant à l'École 221
 
                         </div>
 
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
 
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl
-                            font-extrabold
-                            text-gray-900 dark:text-white
-                            leading-tight">
+                            Bonjour, je suis
 
-                            Sidy Barham
-                            <span class="text-burgundy-600 dark:text-burgundy-400">
-                                Ndao
+                            <span class="block text-burgundy-600 dark:text-burgundy-400">
+                                Sidy Barham Ndao
                             </span>
 
                         </h1>
 
-
-                        <h2 class="mt-4 text-2xl sm:text-3xl
-                            font-bold
-                            text-gray-700 dark:text-gray-300">
-
+                        <h2 class="mt-5 text-2xl sm:text-3xl font-bold">
                             Licence 1 en Génie Logiciel
-
                         </h2>
 
+                        <p class="mt-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
 
-                        <p class="mt-6 text-lg
-                            text-gray-600 dark:text-gray-400
-                            leading-relaxed max-w-2xl">
-
-                            Passionné par le développement d'applications,
-                            la résolution de problèmes complexes et la création
-                            d'expériences numériques intuitives. Je conçois des
-                            projets web modernes et performants avec du HTML,
-                            CSS et JavaScript.
+                            Passionné par le numérique et le développement web,
+                            je développe progressivement mes compétences en
+                            HTML, CSS, JavaScript, WordPress, UI/UX et programmation.
 
                         </p>
 
-
-                        <!-- BUTTONS -->
                         <div class="mt-8 flex flex-wrap gap-4">
 
-                            <a href="#contact" class="px-6 py-3 rounded-lg
-                                bg-burgundy-600 hover:bg-burgundy-700
-                                text-white font-semibold
-                                shadow-lg hover:shadow-xl
-                                transition">
+                            <a href="#contact"
+                               class="px-6 py-3 rounded-xl bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">
 
                                 <i class="fa-solid fa-paper-plane mr-2"></i>
-                                Prendre contact
+
+                                Me contacter
 
                             </a>
 
+                            <a href="#services"
+                               class="px-6 py-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-burgundy-600 hover:text-burgundy-600 dark:hover:text-burgundy-400 font-semibold transition">
 
-                            <a href="#services" class="px-6 py-3 rounded-lg
-                                border-2 border-burgundy-600
-                                text-burgundy-600 dark:text-burgundy-400
-                                hover:bg-burgundy-600
-                                hover:text-white
-                                font-semibold transition">
-
-                                Découvrir mes compétences
+                                Voir mes compétences
 
                             </a>
 
@@ -474,51 +390,39 @@
 
 
                     <!-- PHOTO -->
-                    <div class="flex justify-center lg:justify-end">
+                    <div class="relative flex justify-center lg:justify-end">
 
                         <div class="relative">
 
-                            <div class="w-72 h-80 sm:w-80 sm:h-96
-                                rounded-3xl overflow-hidden
-                                bg-white dark:bg-gray-800
-                                photo-card-shadow">
+                            <div class="absolute -inset-5 rounded-[2rem] bg-burgundy-600/10 blur-2xl"></div>
 
-                                <img src="WhatsApp Image 2026-09-23 at 11.25.29.jpeg" alt="Sidy Barham Ndao"
-                                    class="mirrored-photo w-full h-full object-cover">
+                            <div class="relative w-[280px] sm:w-[350px] lg:w-[420px] h-[380px] sm:h-[460px] lg:h-[520px] rounded-[2rem] overflow-hidden photo-card-shadow bg-gray-200 dark:bg-gray-800">
+
+                                <img
+                                    src="WhatsApp Image 2026-09-23 at 11.25.29.jpeg"
+                                    alt="Sidy Barham Ndao"
+                                    class="mirrored-photo w-full h-full object-cover"
+                                >
 
                             </div>
 
-
-                            <!-- FLOATING POPUP -->
-                            <div class="floating-popup absolute
-                                -bottom-6 -left-6
-                                bg-white dark:bg-gray-800
-                                rounded-2xl shadow-xl
-                                px-5 py-4
-                                border border-gray-100
-                                dark:border-gray-700">
+                            <!-- POPUP -->
+                            <div class="floating-popup absolute -bottom-5 -left-5 bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 px-5 py-4">
 
                                 <div class="flex items-center gap-3">
 
-                                    <div class="w-10 h-10 rounded-full
-                                        bg-green-100 dark:bg-green-900/30
-                                        flex items-center justify-center">
-
-                                        <i class="fa-solid fa-circle-check
-                                            text-green-600"></i>
-
+                                    <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-600"></i>
                                     </div>
 
                                     <div>
-
-                                        <p class="font-bold text-gray-900 dark:text-white">
+                                        <p class="font-bold text-sm">
                                             Disponible
                                         </p>
 
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">
                                             Pour vos projets web
                                         </p>
-
                                     </div>
 
                                 </div>
@@ -532,39 +436,30 @@
                 </div>
 
             </div>
-
         </section>
 
 
-        <!-- =================================================
+        <!-- =========================================================
              SERVICES
-        ================================================== -->
+             ========================================================= -->
+        <section id="services"
+                 class="py-24 bg-gray-50 dark:bg-gray-900/50">
 
-        <section id="services" class="py-24 bg-white dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-5">
 
-            <div class="max-w-6xl mx-auto px-4">
+                <div class="max-w-2xl mb-14">
 
-                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-burgundy-600 dark:text-burgundy-400 font-bold text-sm uppercase tracking-wider">
+                        Mes compétences
+                    </span>
 
-                    <p class="text-burgundy-600 dark:text-burgundy-400 font-semibold mb-3">
-                        MES COMPÉTENCES
-                    </p>
-
-                    <h2 class="text-3xl sm:text-4xl
-                        font-extrabold
-                        text-gray-900 dark:text-white">
-
-                        Services & Compétences
-
+                    <h2 class="mt-3 text-3xl sm:text-4xl font-black">
+                        Ce que je peux faire
                     </h2>
 
-                    <p class="mt-5 text-gray-600 dark:text-gray-400
-                        text-lg">
-
-                        Voici les domaines d'expertise et les services
-                        sur lesquels je me concentre durant mon parcours
-                        académique et mes projets personnels.
-
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">
+                        Des compétences que je développe progressivement
+                        dans le cadre de ma formation en Génie Logiciel.
                     </p>
 
                 </div>
@@ -572,176 +467,127 @@
 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-
                     <!-- CARD 1 -->
-                    <article class="p-7 rounded-2xl
-                        bg-gray-50 dark:bg-gray-900
-                        border border-gray-200 dark:border-gray-700
-                        hover:-translate-y-1
-                        hover:shadow-xl
-                        transition">
+                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl
-                            bg-burgundy-100 dark:bg-burgundy-900/40
-                            text-burgundy-600 dark:text-burgundy-400
-                            flex items-center justify-center text-2xl mb-5">
+                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
 
                             <i class="fa-solid fa-code"></i>
 
                         </div>
 
-                        <h3 class="text-xl font-bold mb-3">
+                        <h3 class="text-xl font-bold">
                             Développement Web
                         </h3>
 
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            HTML5, CSS3, JavaScript, Tailwind CSS,
-                            structure, responsive design et bases de l'UX.
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Création de pages et interfaces web avec HTML,
+                            CSS et les bases de JavaScript.
                         </p>
 
                     </article>
 
 
                     <!-- CARD 2 -->
-                    <article class="p-7 rounded-2xl
-                        bg-gray-50 dark:bg-gray-900
-                        border border-gray-200 dark:border-gray-700
-                        hover:-translate-y-1
-                        hover:shadow-xl
-                        transition">
+                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl
-                            bg-burgundy-100 dark:bg-burgundy-900/40
-                            text-burgundy-600 dark:text-burgundy-400
-                            flex items-center justify-center text-2xl mb-5">
+                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
 
                             <i class="fa-solid fa-network-wired"></i>
 
                         </div>
 
-                        <h3 class="text-xl font-bold mb-3">
+                        <h3 class="text-xl font-bold">
                             Réseaux
                         </h3>
 
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            OSI/TCP-IP, Ethernet, IPv4, encapsulation,
-                            équipements réseau et protocoles.
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Compréhension des bases des réseaux,
+                            protocoles et modèles de communication.
                         </p>
 
                     </article>
 
 
                     <!-- CARD 3 -->
-                    <article class="p-7 rounded-2xl
-                        bg-gray-50 dark:bg-gray-900
-                        border border-gray-200 dark:border-gray-700
-                        hover:-translate-y-1
-                        hover:shadow-xl
-                        transition">
+                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl
-                            bg-burgundy-100 dark:bg-burgundy-900/40
-                            text-burgundy-600 dark:text-burgundy-400
-                            flex items-center justify-center text-2xl mb-5">
+                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
 
-                            <i class="fa-solid fa-pen-ruler"></i>
+                            <i class="fa-brands fa-figma"></i>
 
                         </div>
 
-                        <h3 class="text-xl font-bold mb-3">
+                        <h3 class="text-xl font-bold">
                             UI/UX & Figma
                         </h3>
 
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Création de maquettes, prototypes et parcours
-                            utilisateurs adaptés aux projets numériques.
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Conception de maquettes et prototypes
+                            pour interfaces web et mobiles.
                         </p>
 
                     </article>
 
 
                     <!-- CARD 4 -->
-                    <article class="p-7 rounded-2xl
-                        bg-gray-50 dark:bg-gray-900
-                        border border-gray-200 dark:border-gray-700
-                        hover:-translate-y-1
-                        hover:shadow-xl
-                        transition">
+                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl
-                            bg-burgundy-100 dark:bg-burgundy-900/40
-                            text-burgundy-600 dark:text-burgundy-400
-                            flex items-center justify-center text-2xl mb-5">
+                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
 
-                            <i class="fa-solid fa-palette"></i>
+                            <i class="fa-solid fa-pen-nib"></i>
 
                         </div>
 
-                        <h3 class="text-xl font-bold mb-3">
+                        <h3 class="text-xl font-bold">
                             Design graphique & Illustrator
                         </h3>
 
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Création de supports visuels, logos et éléments
-                            graphiques avec Adobe Illustrator.
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Création de visuels, logos et supports
+                            graphiques avec les outils de design.
                         </p>
 
                     </article>
 
 
                     <!-- CARD 5 -->
-                    <article class="p-7 rounded-2xl
-                        bg-gray-50 dark:bg-gray-900
-                        border border-gray-200 dark:border-gray-700
-                        hover:-translate-y-1
-                        hover:shadow-xl
-                        transition">
+                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl
-                            bg-burgundy-100 dark:bg-burgundy-900/40
-                            text-burgundy-600 dark:text-burgundy-400
-                            flex items-center justify-center text-2xl mb-5">
+                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
 
                             <i class="fa-solid fa-terminal"></i>
 
                         </div>
 
-                        <h3 class="text-xl font-bold mb-3">
+                        <h3 class="text-xl font-bold">
                             Algorithmique & Programmation
                         </h3>
 
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Logique algorithmique, structures de contrôle,
-                            boucles, pseudo-code et bases du langage C.
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Bases de l'algorithmique, pseudocode et
+                            programmation en langage C.
                         </p>
 
                     </article>
 
 
                     <!-- CARD 6 -->
-                    <article class="p-7 rounded-2xl
-                        bg-gray-50 dark:bg-gray-900
-                        border border-gray-200 dark:border-gray-700
-                        hover:-translate-y-1
-                        hover:shadow-xl
-                        transition">
+                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl
-                            bg-burgundy-100 dark:bg-burgundy-900/40
-                            text-burgundy-600 dark:text-burgundy-400
-                            flex items-center justify-center text-2xl mb-5">
+                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
 
                             <i class="fa-brands fa-wordpress"></i>
 
                         </div>
 
-                        <h3 class="text-xl font-bold mb-3">
+                        <h3 class="text-xl font-bold">
                             WordPress
                         </h3>
 
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                            Création et personnalisation de sites WordPress,
-                            pages, contenus et interfaces adaptées.
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Création et personnalisation de sites web
+                            avec WordPress.
                         </p>
 
                     </article>
@@ -753,549 +599,623 @@
         </section>
 
 
-        <!-- =================================================
-             EXPERIENCE
-        ================================================== -->
+        <!-- =========================================================
+             EXPERIENCE / PROJETS
+             ========================================================= -->
+        <section id="experience" class="py-24">
 
-        <section id="experience" class="py-24 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-5">
 
-            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-12">
 
-                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <div>
 
-                    <p class="text-burgundy-600 dark:text-burgundy-400 font-semibold mb-3">
-                        MON PARCOURS
-                    </p>
+                        <span class="text-burgundy-600 dark:text-burgundy-400 font-bold text-sm uppercase tracking-wider">
+                            Parcours & projets
+                        </span>
 
-                    <h2 class="text-3xl sm:text-4xl
-                        font-extrabold
-                        text-gray-900 dark:text-white">
+                        <h2 class="mt-3 text-3xl sm:text-4xl font-black">
+                            Mon expérience
+                        </h2>
 
-                        Parcours & Expérience
+                        <p class="mt-4 text-gray-600 dark:text-gray-400">
+                            Quelques expériences et projets réalisés pendant
+                            mon parcours.
+                        </p>
 
-                    </h2>
+                    </div>
 
-                    <p class="mt-5 text-gray-600 dark:text-gray-400
-                        text-lg">
+                    <!-- BOUTONS -->
+                    <div class="flex gap-3">
 
-                        Mon cheminement académique et mes réalisations
-                        durant ma formation en Génie Logiciel.
+                        <button
+                            id="experience-prev"
+                            type="button"
+                            aria-label="Projet précédent"
+                            class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-burgundy-600 hover:text-white hover:border-burgundy-600 transition">
 
-                    </p>
+                            <i class="fa-solid fa-arrow-left"></i>
+
+                        </button>
+
+                        <button
+                            id="experience-next"
+                            type="button"
+                            aria-label="Projet suivant"
+                            class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-burgundy-600 hover:text-white hover:border-burgundy-600 transition">
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
 
                 </div>
 
 
-                <div class="experience-carousel">
+                <!-- CAROUSEL -->
+                <div
+                    class="experience-carousel"
+                    id="experience-carousel"
+                    aria-label="Carousel des expériences">
 
-                    <div id="experience-track" class="experience-track">
+                    <div
+                        class="experience-track"
+                        id="experience-track">
 
 
-                        <!-- CARD 1 -->
-                        <article class="experience-card
-                            p-7 rounded-2xl
-                            bg-white dark:bg-gray-800
-                            border border-gray-200 dark:border-gray-700
-                            shadow-lg">
+                        <!-- =================================================
+                             CARD 1
+                             ================================================= -->
+                        <article class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="flex items-center gap-3 mb-5">
+                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
 
-                                <div class="w-12 h-12 rounded-xl
-                                    bg-burgundy-100 dark:bg-burgundy-900/40
-                                    flex items-center justify-center
-                                    text-burgundy-600 dark:text-burgundy-400">
-
-                                    <i class="fa-solid fa-graduation-cap"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <p class="text-sm text-burgundy-600 dark:text-burgundy-400 font-semibold">
-                                        2025 - Présent
-                                    </p>
-
-                                    <h3 class="font-bold text-lg">
-                                        Licence 1 en Génie Logiciel
-                                    </h3>
-
-                                </div>
+                                <i class="fa-solid fa-graduation-cap"></i>
 
                             </div>
 
-                            <p class="font-semibold mb-3">
-                                École 221
-                            </p>
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">
+                                Formation
+                            </span>
 
-                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                Formation en développement web, algorithmique,
-                                réseaux, systèmes et conception de projets
-                                numériques.
+                            <h3 class="mt-2 text-2xl font-bold">
+                                Licence 1 en Génie Logiciel
+                            </h3>
+
+                            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Formation orientée vers le développement,
+                                les réseaux, l'algorithmique, les bases
+                                de données et les technologies numériques.
                             </p>
 
                         </article>
 
 
-                        <!-- CARD 2 -->
-                        <article class="experience-card
-                            p-7 rounded-2xl
-                            bg-white dark:bg-gray-800
-                            border border-gray-200 dark:border-gray-700
-                            shadow-lg">
+                        <!-- =================================================
+                             CARD 2
+                             ================================================= -->
+                        <article class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="flex items-center gap-3 mb-5">
+                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
 
-                                <div class="w-12 h-12 rounded-xl
-                                    bg-burgundy-100 dark:bg-burgundy-900/40
-                                    flex items-center justify-center
-                                    text-burgundy-600 dark:text-burgundy-400">
-
-                                    <i class="fa-solid fa-dumbbell"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <p class="text-sm text-burgundy-600 dark:text-burgundy-400 font-semibold">
-                                        Projet L1
-                                    </p>
-
-                                    <h3 class="font-bold text-lg">
-                                        SUNUGAL SPORT 221
-                                    </h3>
-
-                                </div>
+                                <i class="fa-solid fa-dumbbell"></i>
 
                             </div>
 
-                            <p class="font-semibold mb-3">
-                                Site web de salle de sport
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">
+                                Projet Web
+                            </span>
+
+                            <h3 class="mt-2 text-2xl font-bold">
+                                SUNUGAL SPORT 221
+                            </h3>
+
+                            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Création d'un site web moderne pour une
+                                salle de sport avec présentation des
+                                programmes, tarifs, coachs et contact.
                             </p>
 
-                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
-                                Conception d'un site web moderne et responsive
-                                pour une salle de sport.
-                            </p>
-
-                            <a href="https://sunugal-sport-eslp.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                class="text-burgundy-600 dark:text-burgundy-400 font-semibold">
+                            <a
+                                href="https://sunugal-sport-eslp.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
 
                                 Voir le projet
-                                <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+
+                                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
 
                             </a>
 
                         </article>
 
 
-                        <!-- CARD 3 -->
-                        <article class="experience-card
-                            p-7 rounded-2xl
-                            bg-white dark:bg-gray-800
-                            border border-gray-200 dark:border-gray-700
-                            shadow-lg">
+                        <!-- =================================================
+                             CARD 3
+                             ================================================= -->
+                        <article class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="flex items-center gap-3 mb-5">
+                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
 
-                                <div class="w-12 h-12 rounded-xl
-                                    bg-burgundy-100 dark:bg-burgundy-900/40
-                                    flex items-center justify-center
-                                    text-burgundy-600 dark:text-burgundy-400">
-
-                                    <i class="fa-brands fa-wordpress"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <p class="text-sm text-burgundy-600 dark:text-burgundy-400 font-semibold">
-                                        Projet WordPress
-                                    </p>
-
-                                    <h3 class="font-bold text-lg">
-                                        PAWS AND BYTES
-                                    </h3>
-
-                                </div>
+                                <i class="fa-solid fa-paw"></i>
 
                             </div>
 
-                            <p class="font-semibold mb-3">
-                                Projet d'intégration WordPress
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">
+                                Projet Web
+                            </span>
+
+                            <h3 class="mt-2 text-2xl font-bold">
+                                PAWS AND BYTES
+                            </h3>
+
+                            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Projet web réalisé autour d'un concept
+                                numérique avec une interface pensée
+                                pour présenter les différents contenus.
                             </p>
 
-                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                Création et intégration d'un projet WordPress
-                                dans le cadre de ma formation.
+                            <a
+                                href="https://dev-bytes-et-bytes.pantheonsite.io/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+
+                                Voir le projet
+
+                                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+
+                            </a>
+
+                        </article>
+
+
+                        <!-- =================================================
+                             CARD 4 HOTEL TERANGA
+                             ================================================= -->
+                        <article class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+
+                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+
+                                <i class="fa-solid fa-hotel"></i>
+
+                            </div>
+
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">
+                                Projet Web
+                            </span>
+
+                            <h3 class="mt-2 text-2xl font-bold">
+                                HOTEL TERANGA
+                            </h3>
+
+                            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Projet de site web destiné à présenter
+                                l'hôtel, ses services et son univers
+                                à travers une interface moderne.
+                            </p>
+
+                            <a
+                                href="https://dev-senegal-charme-hotel.pantheonsite.io/?preview_id=13&preview_nonce=aeab54e338&preview=true"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+
+                                Voir le projet
+
+                                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+
+                            </a>
+
+                        </article>
+
+
+                        <!-- =================================================
+                             DUPLICATION POUR CAROUSEL INFINI
+                             ================================================= -->
+
+                        <!-- DUPLICATE 1 -->
+                        <article
+                            aria-hidden="true"
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+
+                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">
+                                Formation
+                            </span>
+
+                            <h3 class="mt-2 text-2xl font-bold">
+                                Licence 1 en Génie Logiciel
+                            </h3>
+
+                            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Formation orientée vers le développement,
+                                les réseaux, l'algorithmique et les
+                                technologies numériques.
                             </p>
 
                         </article>
 
 
-                        <!-- CARD 4 -->
-                        <article class="experience-card
-                            p-7 rounded-2xl
-                            bg-white dark:bg-gray-800
-                            border border-gray-200 dark:border-gray-700
-                            shadow-lg">
+                        <!-- DUPLICATE 2 -->
+                        <article
+                            aria-hidden="true"
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="flex items-center gap-3 mb-5">
-
-                                <div class="w-12 h-12 rounded-xl
-                                    bg-burgundy-100 dark:bg-burgundy-900/40
-                                    flex items-center justify-center
-                                    text-burgundy-600 dark:text-burgundy-400">
-
-                                    <i class="fa-solid fa-hotel"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <p class="text-sm text-burgundy-600 dark:text-burgundy-400 font-semibold">
-                                        Projet Web
-                                    </p>
-
-                                    <h3 class="font-bold text-lg">
-                                        HOTEL TERANGA
-                                    </h3>
-
-                                </div>
-
+                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-dumbbell"></i>
                             </div>
 
-                            <p class="font-semibold mb-3">
-                                Conception d'un site hôtelier
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">
+                                Projet Web
+                            </span>
+
+                            <h3 class="mt-2 text-2xl font-bold">
+                                SUNUGAL SPORT 221
+                            </h3>
+
+                            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Création d'un site web moderne pour
+                                une salle de sport.
                             </p>
 
-                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                Conception d'une interface web moderne destinée
-                                à présenter les services et les offres d'un hôtel.
-                            </p>
+                            <a
+                                tabindex="-1"
+                                href="https://sunugal-sport-eslp.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+
+                                Voir le projet
+
+                                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+
+                            </a>
 
                         </article>
 
 
-                        <!-- DUPLICATION POUR LE CAROUSEL -->
-                        <div aria-hidden="true">
+                        <!-- DUPLICATE 3 -->
+                        <article
+                            aria-hidden="true"
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="experience-card
-                                inline-block
-                                p-7 rounded-2xl
-                                bg-white dark:bg-gray-800
-                                border border-gray-200 dark:border-gray-700
-                                shadow-lg">
-
-                                <p class="font-bold text-lg mb-3">
-                                    Licence 1 en Génie Logiciel
-                                </p>
-
-                                <p class="text-gray-600 dark:text-gray-400">
-                                    École 221 — 2025 à présent
-                                </p>
-
+                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-paw"></i>
                             </div>
 
-                        </div>
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">
+                                Projet Web
+                            </span>
+
+                            <h3 class="mt-2 text-2xl font-bold">
+                                PAWS AND BYTES
+                            </h3>
+
+                            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Projet web réalisé autour d'un concept
+                                numérique.
+                            </p>
+
+                            <a
+                                tabindex="-1"
+                                href="https://dev-bytes-et-bytes.pantheonsite.io/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+
+                                Voir le projet
+
+                                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+
+                            </a>
+
+                        </article>
+
+
+                        <!-- DUPLICATE 4 HOTEL TERANGA -->
+                        <article
+                            aria-hidden="true"
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+
+                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-hotel"></i>
+                            </div>
+
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">
+                                Projet Web
+                            </span>
+
+                            <h3 class="mt-2 text-2xl font-bold">
+                                HOTEL TERANGA
+                            </h3>
+
+                            <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Projet de site web destiné à présenter
+                                l'hôtel et ses services.
+                            </p>
+
+                            <a
+                                tabindex="-1"
+                                href="https://dev-senegal-charme-hotel.pantheonsite.io/?preview_id=13&preview_nonce=aeab54e338&preview=true"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+
+                                Voir le projet
+
+                                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+
+                            </a>
+
+                        </article>
 
                     </div>
-
                 </div>
 
-
-                <!-- CAROUSEL BUTTONS -->
-                <div class="flex justify-center gap-4 mt-8">
-
-                    <button id="experience-prev" type="button" aria-label="Précédent" class="w-12 h-12 rounded-full
-                        bg-white dark:bg-gray-800
-                        border border-gray-200 dark:border-gray-700
-                        shadow-md
-                        hover:bg-burgundy-600 hover:text-white
-                        transition">
-
-                        <i class="fa-solid fa-arrow-left"></i>
-
-                    </button>
-
-
-                    <button id="experience-next" type="button" aria-label="Suivant" class="w-12 h-12 rounded-full
-                        bg-white dark:bg-gray-800
-                        border border-gray-200 dark:border-gray-700
-                        shadow-md
-                        hover:bg-burgundy-600 hover:text-white
-                        transition">
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </button>
-
-                </div>
+                <p class="text-center text-sm text-gray-500 dark:text-gray-500 mt-5">
+                    <i class="fa-solid fa-hand-pointer mr-1"></i>
+                    Faites glisser les cartes avec la souris ou le doigt
+                </p>
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
+        <!-- =========================================================
              CONTACT
-        ================================================== -->
+             ========================================================= -->
+        <section id="contact"
+                 class="py-24 bg-gray-50 dark:bg-gray-900/50">
 
-        <section id="contact" class="py-24 bg-white dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-5">
 
-            <div class="max-w-6xl mx-auto px-4">
+                <div class="max-w-2xl mb-14">
 
-                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-burgundy-600 dark:text-burgundy-400 font-bold text-sm uppercase tracking-wider">
+                        Contact
+                    </span>
 
-                    <p class="text-burgundy-600 dark:text-burgundy-400 font-semibold mb-3">
-                        CONTACT
-                    </p>
-
-                    <h2 class="text-3xl sm:text-4xl
-                        font-extrabold
-                        text-gray-900 dark:text-white">
-
-                        Me Contacter
-
+                    <h2 class="mt-3 text-3xl sm:text-4xl font-black">
+                        Parlons de votre projet
                     </h2>
 
-                    <p class="mt-5 text-gray-600 dark:text-gray-400
-                        text-lg">
-
-                        Vous avez un projet, une opportunité ou une question ?
-                        N'hésitez pas à me laisser un message.
-
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">
+                        Vous avez une idée ou un projet web ?
+                        N'hésitez pas à me contacter.
                     </p>
 
                 </div>
 
 
-                <div class="grid lg:grid-cols-2 gap-12">
+                <div class="grid lg:grid-cols-2 gap-10">
+
+                    <!-- COORDONNÉES -->
+                    <div class="space-y-5">
+
+                        <!-- EMAIL -->
+                        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+
+                            <div class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
+
+                                <i class="fa-solid fa-envelope"></i>
+
+                            </div>
+
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    E-mail
+                                </p>
+
+                                <a
+                                    href="mailto:ibrahimandao2006@gmail.com"
+                                    class="font-semibold hover:text-burgundy-600 dark:hover:text-burgundy-400 break-all">
+
+                                    ibrahimandao2006@gmail.com
+
+                                </a>
+                            </div>
+
+                        </div>
 
 
-                    <!-- FORM -->
-                    <div class="bg-gray-50 dark:bg-gray-900
-                        rounded-2xl p-7 sm:p-9
-                        border border-gray-200 dark:border-gray-700">
+                        <!-- TELEPHONE -->
+                        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
 
-                        <form id="contact-form">
+                            <div class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
 
-                            <input type="hidden" name="access_key" value="3e26ace8-35d4-430a-aedd-dd2e945a971d">
+                                <i class="fa-solid fa-phone"></i>
 
-                            <input type="hidden" name="subject"
-                                value="Nouveau message depuis le portfolio de Sidy Barham Ndao">
+                            </div>
+
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    Téléphone
+                                </p>
+
+                                <a
+                                    href="tel:+221763324012"
+                                    class="font-semibold hover:text-burgundy-600 dark:hover:text-burgundy-400">
+
+                                    +221 76 332 40 12
+
+                                </a>
+                            </div>
+
+                        </div>
 
 
-                            <div class="mb-5">
+                        <!-- FORMATION -->
+                        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
 
-                                <label for="name" class="block font-semibold mb-2">
+                            <div class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
 
-                                    Nom complet
+                                <i class="fa-solid fa-graduation-cap"></i>
+
+                            </div>
+
+                            <div>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    Formation
+                                </p>
+
+                                <p class="font-semibold">
+                                    Licence 1 – Génie Logiciel
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <!-- RESEAUX -->
+                        <div class="flex gap-3 pt-3">
+
+                            <a
+                                href="#"
+                                aria-label="LinkedIn"
+                                class="w-11 h-11 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-center hover:bg-burgundy-600 hover:text-white transition">
+
+                                <i class="fa-brands fa-linkedin-in"></i>
+
+                            </a>
+
+                            <a
+                                href="#"
+                                aria-label="GitHub"
+                                class="w-11 h-11 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-center hover:bg-burgundy-600 hover:text-white transition">
+
+                                <i class="fa-brands fa-github"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORMULAIRE -->
+                    <form
+                        id="contact-form"
+                        action="https://api.web3forms.com/submit"
+                        method="POST"
+                        novalidate
+                        class="bg-white dark:bg-gray-900 rounded-2xl p-7 sm:p-8 border border-gray-200 dark:border-gray-800">
+
+                        <input
+                            type="hidden"
+                            name="access_key"
+                            value="3e26ace8-35d4-430a-aedd-dd2e945a971d">
+
+                        <input
+                            type="hidden"
+                            name="subject"
+                            value="Nouveau message depuis le portfolio de Sidy Barham Ndao">
+
+                        <input
+                            type="checkbox"
+                            name="botcheck"
+                            class="hidden"
+                            tabindex="-1"
+                            autocomplete="off">
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+
+                            <div class="sm:col-span-1">
+
+                                <label
+                                    for="name"
+                                    class="block text-sm font-semibold mb-2">
+
+                                    Nom
 
                                 </label>
 
-                                <input id="name" name="name" type="text" required placeholder="Votre nom" class="w-full px-4 py-3 rounded-lg
-                                    bg-white dark:bg-gray-800
-                                    border border-gray-300 dark:border-gray-700
-                                    text-gray-900 dark:text-white
-                                    focus:outline-none
-                                    focus:ring-2 focus:ring-burgundy-600">
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    required
+                                    minlength="2"
+                                    maxlength="80"
+                                    autocomplete="name"
+                                    pattern="[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,80}"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20"
+                                    placeholder="Votre nom">
 
                             </div>
 
 
-                            <div class="mb-5">
+                            <div class="sm:col-span-1">
 
-                                <label for="email" class="block font-semibold mb-2">
+                                <label
+                                    for="email"
+                                    class="block text-sm font-semibold mb-2">
 
-                                    Adresse E-mail
+                                    E-mail
 
                                 </label>
 
-                                <input id="email" name="email" type="email" required placeholder="nom@exemple.com"
-                                    class="w-full px-4 py-3 rounded-lg
-                                    bg-white dark:bg-gray-800
-                                    border border-gray-300 dark:border-gray-700
-                                    text-gray-900 dark:text-white
-                                    focus:outline-none
-                                    focus:ring-2 focus:ring-burgundy-600">
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    required
+                                    maxlength="120"
+                                    autocomplete="email"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20"
+                                    placeholder="votre@email.com">
 
                             </div>
 
 
-                            <div class="mb-6">
+                            <div class="sm:col-span-2">
 
-                                <label for="message" class="block font-semibold mb-2">
+                                <label
+                                    for="message"
+                                    class="block text-sm font-semibold mb-2">
 
                                     Message
 
                                 </label>
 
-                                <textarea id="message" name="message" rows="6" required
-                                    placeholder="Expliquez-moi votre projet..." class="w-full px-4 py-3 rounded-lg
-                                    bg-white dark:bg-gray-800
-                                    border border-gray-300 dark:border-gray-700
-                                    text-gray-900 dark:text-white
-                                    focus:outline-none
-                                    focus:ring-2 focus:ring-burgundy-600
-                                    resize-none"></textarea>
-
-                            </div>
-
-
-                            <button id="submit-button" type="submit" class="w-full px-6 py-3 rounded-lg
-                                bg-burgundy-600 hover:bg-burgundy-700
-                                text-white font-semibold
-                                shadow-lg transition">
-
-                                <i class="fa-solid fa-paper-plane mr-2"></i>
-
-                                Envoyer le message
-
-                            </button>
-
-                        </form>
-
-                    </div>
-
-
-                    <!-- CONTACT INFO -->
-                    <div class="flex flex-col justify-center">
-
-                        <div class="space-y-7">
-
-
-                            <div class="flex items-start gap-4">
-
-                                <div class="w-12 h-12 rounded-xl
-                                    bg-burgundy-100 dark:bg-burgundy-900/40
-                                    text-burgundy-600 dark:text-burgundy-400
-                                    flex items-center justify-center
-                                    flex-shrink-0">
-
-                                    <i class="fa-solid fa-envelope"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <h3 class="font-bold text-lg">
-                                        E-mail
-                                    </h3>
-
-                                    <a href="mailto:ibrahimandao2006@gmail.com"
-                                        class="text-gray-600 dark:text-gray-400 hover:text-burgundy-600">
-                                        ibrahimandao2006@gmail.com
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="flex items-start gap-4">
-
-                                <div class="w-12 h-12 rounded-xl
-                                    bg-burgundy-100 dark:bg-burgundy-900/40
-                                    text-burgundy-600 dark:text-burgundy-400
-                                    flex items-center justify-center
-                                    flex-shrink-0">
-
-                                    <i class="fa-solid fa-phone"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <h3 class="font-bold text-lg">
-                                        Téléphone
-                                    </h3>
-
-                                    <a href="tel:+221763324012"
-                                        class="text-gray-600 dark:text-gray-400 hover:text-burgundy-600">
-                                        +221 76 332 40 12
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="flex items-start gap-4">
-
-                                <div class="w-12 h-12 rounded-xl
-                                    bg-burgundy-100 dark:bg-burgundy-900/40
-                                    text-burgundy-600 dark:text-burgundy-400
-                                    flex items-center justify-center
-                                    flex-shrink-0">
-
-                                    <i class="fa-solid fa-graduation-cap"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <h3 class="font-bold text-lg">
-                                        Formation
-                                    </h3>
-
-                                    <p class="text-gray-600 dark:text-gray-400">
-                                        École 221 - Génie Logiciel L1
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- SOCIAL -->
-                            <div class="pt-5">
-
-                                <h3 class="font-bold text-lg mb-4">
-                                    Réseaux sociaux
-                                </h3>
-
-                                <div class="flex gap-3">
-
-                                    <a href="#" aria-label="LinkedIn" class="w-11 h-11 rounded-full
-                                        bg-gray-100 dark:bg-gray-700
-                                        flex items-center justify-center
-                                        hover:bg-burgundy-600
-                                        hover:text-white transition">
-
-                                        <i class="fa-brands fa-linkedin-in"></i>
-
-                                    </a>
-
-
-                                    <a href="#" aria-label="GitHub" class="w-11 h-11 rounded-full
-                                        bg-gray-100 dark:bg-gray-700
-                                        flex items-center justify-center
-                                        hover:bg-burgundy-600
-                                        hover:text-white transition">
-
-                                        <i class="fa-brands fa-github"></i>
-
-                                    </a>
-
-
-                                    <a href="https://wa.me/221763324012" target="_blank" rel="noopener noreferrer"
-                                        aria-label="WhatsApp" class="w-11 h-11 rounded-full
-                                        bg-gray-100 dark:bg-gray-700
-                                        flex items-center justify-center
-                                        hover:bg-green-600
-                                        hover:text-white transition">
-
-                                        <i class="fa-brands fa-whatsapp"></i>
-
-                                    </a>
-
-                                </div>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    required
+                                    minlength="10"
+                                    maxlength="2000"
+                                    rows="6"
+                                    autocomplete="off"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20 resize-y"
+                                    placeholder="Écrivez votre message..."></textarea>
 
                             </div>
 
                         </div>
 
-                    </div>
+
+                        <button
+                            type="submit"
+                            id="submit-button"
+                            class="mt-6 w-full px-6 py-3.5 rounded-xl bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">
+
+                            <span id="submit-text">
+                                Envoyer le message
+                            </span>
+
+                            <i
+                                id="submit-loader"
+                                class="fa-solid fa-spinner fa-spin hidden ml-2"></i>
+
+                        </button>
+
+                    </form>
 
                 </div>
 
@@ -1306,76 +1226,42 @@
     </main>
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <!-- =========================================================
+         WHATSAPP
+         ========================================================= -->
 
-    <footer class="py-8
-        bg-gray-900 dark:bg-black
-        text-gray-300">
+    <div class="fixed bottom-5 right-5 z-50">
 
-        <div class="max-w-6xl mx-auto px-4 text-center">
+        <div
+            id="whatsapp-popup"
+            class="whatsapp-popup absolute bottom-16 right-0 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-xl p-4">
 
-            <p>
-                © 2026 Sidy Barham Ndao -
-                Tous droits réservés.
-                École 221.
+            <p class="font-bold mb-1">
+                Besoin de me contacter ?
             </p>
 
-        </div>
-
-    </footer>
-
-
-    <!-- =====================================================
-         WHATSAPP POPUP
-    ====================================================== -->
-
-    <div class="fixed bottom-6 right-6 z-50">
-
-        <div id="popup-card" class="hidden-popup absolute bottom-16 right-0
-            w-72
-            bg-white dark:bg-gray-800
-            rounded-2xl shadow-2xl
-            border border-gray-200 dark:border-gray-700
-            p-5">
-
-            <button id="popup-close" type="button" class="absolute top-3 right-3
-                text-gray-400 hover:text-gray-700
-                dark:hover:text-white">
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
-            <h3 class="font-bold text-lg mb-2">
-                Discussion Rapide
-            </h3>
-
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Besoin d'un renseignement ou d'une collaboration directe ?
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                Écrivez-moi directement sur WhatsApp.
             </p>
 
-            <a href="https://wa.me/221763324012" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2
-                w-full px-4 py-3 rounded-lg
-                bg-green-600 hover:bg-green-700
-                text-white font-semibold">
+            <a
+                href="https://wa.me/221763324012"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-center bg-green-600 hover:bg-green-700 text-white rounded-xl py-2.5 font-semibold">
 
-                <i class="fa-brands fa-whatsapp"></i>
-
-                Discuter sur WhatsApp
+                Ouvrir WhatsApp
 
             </a>
 
         </div>
 
 
-        <button id="popup-toggle" type="button" aria-label="WhatsApp" class="w-14 h-14 rounded-full
-            bg-green-600 hover:bg-green-700
-            text-white text-2xl
-            shadow-xl
-            flex items-center justify-center
-            transition">
+        <button
+            id="whatsapp-button"
+            type="button"
+            aria-label="WhatsApp"
+            class="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white text-2xl shadow-xl flex items-center justify-center transition">
 
             <i class="fa-brands fa-whatsapp"></i>
 
@@ -1384,407 +1270,213 @@
     </div>
 
 
-    <!-- =====================================================
+    <!-- =========================================================
          TOAST
-    ====================================================== -->
+         ========================================================= -->
 
-    <div id="toast" class="fixed top-24 right-5 z-[100]
-        opacity-0 translate-x-10 pointer-events-none
-        bg-gray-900 dark:bg-white
-        text-white dark:text-gray-900
-        px-5 py-4 rounded-xl shadow-xl
-        max-w-sm">
+    <div
+        id="toast"
+        class="toast fixed bottom-5 left-1/2 -translate-x-1/2 z-[100]">
+
+        <div
+            id="toast-content"
+            class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-5 py-3 rounded-xl shadow-xl text-sm font-semibold">
+
+            Message
+
+        </div>
 
     </div>
 
 
-    <!-- =====================================================
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="py-8 border-t border-gray-200 dark:border-gray-800">
+
+        <div class="max-w-7xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+            <p class="text-sm text-gray-500 dark:text-gray-400 text-center sm:text-left">
+                © 2026 Sidy Barham Ndao. Tous droits réservés.
+            </p>
+
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                Licence 1 — Génie Logiciel
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
          JAVASCRIPT
-    ====================================================== -->
+         ========================================================= -->
 
     <script>
 
-        /* =================================================
-           MODE CLAIR / SOMBRE
-        ================================================== */
+        /* =========================================================
+           THEME
+           ========================================================= */
 
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const darkIcon = document.getElementById('theme-toggle-dark-icon');
-        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 
-        const mobileThemeToggle =
-            document.getElementById('mobile-theme-toggle');
-
-        const mobileThemeIcon =
-            document.getElementById('mobile-theme-icon');
-
-        const mobileThemeText =
-            document.getElementById('mobile-theme-text');
-
-
-        function isDarkMode() {
-            return document.documentElement.classList.contains('dark');
-        }
-
+        const themeIcon = document.getElementById('theme-icon');
+        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
 
         function updateThemeIcons() {
 
-            const dark = isDarkMode();
+            const isDark = document.documentElement.classList.contains('dark');
 
-            if (dark) {
+            if (isDark) {
 
-                darkIcon.classList.add('hidden');
-                lightIcon.classList.remove('hidden');
-
-            } else {
-
-                lightIcon.classList.add('hidden');
-                darkIcon.classList.remove('hidden');
-
-            }
-
-            updateMobileThemeButton();
-        }
-
-
-        function updateMobileThemeButton() {
-
-            const dark = isDarkMode();
-
-            if (dark) {
-
-                mobileThemeIcon.className =
-                    'fa-solid fa-sun mr-3';
-
-                mobileThemeText.textContent =
-                    'Mode clair';
+                themeIcon.className = 'fa-solid fa-sun';
+                mobileThemeIcon.className = 'fa-solid fa-sun';
 
             } else {
 
-                mobileThemeIcon.className =
-                    'fa-solid fa-moon mr-3';
+                themeIcon.className = 'fa-solid fa-moon';
+                mobileThemeIcon.className = 'fa-solid fa-moon';
 
-                mobileThemeText.textContent =
-                    'Mode sombre';
             }
         }
 
 
-        function applyTheme(theme) {
+        function toggleTheme() {
 
-            if (theme === 'dark') {
+            document.documentElement.classList.toggle('dark');
 
-                document.documentElement.classList.add('dark');
+            const isDark =
+                document.documentElement.classList.contains('dark');
 
-            } else {
-
-                document.documentElement.classList.remove('dark');
-
-            }
-
-            localStorage.setItem('color-theme', theme);
+            localStorage.setItem(
+                'theme',
+                isDark ? 'dark' : 'light'
+            );
 
             updateThemeIcons();
         }
 
 
-        function initializeTheme() {
+        if (localStorage.getItem('theme') === 'dark') {
 
-            const savedTheme =
-                localStorage.getItem('color-theme');
+            document.documentElement.classList.add('dark');
 
-            if (savedTheme === 'dark') {
+        } else if (
+            !localStorage.getItem('theme') &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+        ) {
 
-                document.documentElement.classList.add('dark');
+            document.documentElement.classList.add('dark');
 
-            } else if (savedTheme === 'light') {
-
-                document.documentElement.classList.remove('dark');
-
-            } else {
-
-                if (
-                    window.matchMedia &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches
-                ) {
-
-                    document.documentElement.classList.add('dark');
-
-                } else {
-
-                    document.documentElement.classList.remove('dark');
-
-                }
-
-            }
-
-            updateThemeIcons();
         }
 
 
-        themeToggleBtn.addEventListener('click', function () {
+        updateThemeIcons();
 
-            if (isDarkMode()) {
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
 
-                applyTheme('light');
+
+        /* =========================================================
+           MENU MOBILE
+           ========================================================= */
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuToggle.addEventListener('click', function () {
+
+            mobileMenu.classList.toggle('open');
+
+            if (mobileMenu.classList.contains('open')) {
+
+                menuIcon.className = 'fa-solid fa-xmark';
 
             } else {
 
-                applyTheme('dark');
+                menuIcon.className = 'fa-solid fa-bars';
 
             }
 
         });
 
 
-        mobileThemeToggle.addEventListener('click', function () {
+        document.querySelectorAll('.mobile-link').forEach(link => {
 
-            if (isDarkMode()) {
+            link.addEventListener('click', function () {
 
-                applyTheme('light');
+                mobileMenu.classList.remove('open');
 
-            } else {
-
-                applyTheme('dark');
-
-            }
-
-        });
-
-
-        initializeTheme();
-
-
-        /* =================================================
-           MENU BURGER
-        ================================================== */
-
-        const mobileMenuButton =
-            document.getElementById('mobile-menu-button');
-
-        const mobileMenu =
-            document.getElementById('mobile-menu');
-
-        const mobileMenuIcon =
-            document.getElementById('mobile-menu-icon');
-
-
-        function openMobileMenu() {
-
-            mobileMenu.classList.add('active');
-
-            mobileMenuButton.setAttribute(
-                'aria-expanded',
-                'true'
-            );
-
-            mobileMenuIcon.className =
-                'fa-solid fa-xmark text-xl';
-
-        }
-
-
-        function closeMobileMenu() {
-
-            mobileMenu.classList.remove('active');
-
-            mobileMenuButton.setAttribute(
-                'aria-expanded',
-                'false'
-            );
-
-            mobileMenuIcon.className =
-                'fa-solid fa-bars text-xl';
-
-        }
-
-
-        mobileMenuButton.addEventListener('click', function () {
-
-            if (mobileMenu.classList.contains('active')) {
-
-                closeMobileMenu();
-
-            } else {
-
-                openMobileMenu();
-
-            }
-
-        });
-
-
-        document
-            .querySelectorAll('.mobile-nav-link')
-            .forEach(function (link) {
-
-                link.addEventListener('click', function () {
-
-                    closeMobileMenu();
-
-                });
+                menuIcon.className = 'fa-solid fa-bars';
 
             });
 
-
-        document.addEventListener('click', function (event) {
-
-            const clickedInsideMenu =
-                mobileMenu.contains(event.target);
-
-            const clickedButton =
-                mobileMenuButton.contains(event.target);
-
-            if (
-                !clickedInsideMenu &&
-                !clickedButton
-            ) {
-
-                closeMobileMenu();
-
-            }
-
         });
 
 
-        /* =================================================
-           RESPONSIVE MENU
-           BURGER JUSQU'À 1024PX
-        ================================================== */
-
-        window.addEventListener('resize', function () {
-
-            if (window.innerWidth >= 1024) {
-
-                closeMobileMenu();
-
-            }
-
-        });
-
-
-        /* =================================================
+        /* =========================================================
            WHATSAPP POPUP
-        ================================================== */
+           ========================================================= */
 
-        const popupToggle =
-            document.getElementById('popup-toggle');
+        const whatsappButton =
+            document.getElementById('whatsapp-button');
 
-        const popupCard =
-            document.getElementById('popup-card');
+        const whatsappPopup =
+            document.getElementById('whatsapp-popup');
 
-        const popupClose =
-            document.getElementById('popup-close');
+        whatsappButton.addEventListener('click', function () {
 
-
-        popupToggle.addEventListener('click', function () {
-
-            popupCard.classList.toggle('hidden-popup');
-
-        });
-
-
-        popupClose.addEventListener('click', function () {
-
-            popupCard.classList.add('hidden-popup');
+            whatsappPopup.classList.toggle('show');
 
         });
 
 
         document.addEventListener('click', function (event) {
 
-            const insidePopup =
-                popupCard.contains(event.target);
-
-            const clickedPopupButton =
-                popupToggle.contains(event.target);
-
             if (
-                !insidePopup &&
-                !clickedPopupButton
+                !whatsappPopup.contains(event.target) &&
+                !whatsappButton.contains(event.target)
             ) {
 
-                popupCard.classList.add('hidden-popup');
+                whatsappPopup.classList.remove('show');
 
             }
 
         });
 
 
-        /* =================================================
-           PHOTO FLOATING ANIMATION
-        ================================================== */
-
-        const floatingPopup =
-            document.querySelector('.floating-popup');
-
-        let floatingStart = null;
-
-
-        function animateFloating(timestamp) {
-
-            if (!floatingStart) {
-                floatingStart = timestamp;
-            }
-
-            const elapsed =
-                timestamp - floatingStart;
-
-            const y =
-                Math.sin(elapsed / 700) * 5;
-
-            if (floatingPopup) {
-
-                floatingPopup.style.transform =
-                    `translateY(${y}px)`;
-
-            }
-
-            requestAnimationFrame(animateFloating);
-        }
-
-
-        requestAnimationFrame(animateFloating);
-
-
-        /* =================================================
+        /* =========================================================
            TOAST
-        ================================================== */
+           ========================================================= */
 
-        const toast =
-            document.getElementById('toast');
+        const toast = document.getElementById('toast');
+        const toastContent = document.getElementById('toast-content');
 
         let toastTimeout;
 
-
         function showToast(message) {
 
-            toast.textContent = message;
+            toastContent.textContent = message;
 
-            toast.classList.remove(
-                'opacity-0',
-                'translate-x-10',
-                'pointer-events-none'
-            );
+            toast.classList.add('show');
 
             clearTimeout(toastTimeout);
 
             toastTimeout = setTimeout(function () {
 
-                toast.classList.add(
-                    'opacity-0',
-                    'translate-x-10',
-                    'pointer-events-none'
-                );
+                toast.classList.remove('show');
 
             }, 4000);
-
         }
 
 
-        /* =================================================
-           WEB3FORMS
-        ================================================== */
+        /* =========================================================
+           FORMULAIRE CONTACT
+           ========================================================= */
 
         const contactForm =
             document.getElementById('contact-form');
@@ -1792,83 +1484,177 @@
         const submitButton =
             document.getElementById('submit-button');
 
+        const submitText =
+            document.getElementById('submit-text');
 
-        contactForm.addEventListener(
-            'submit',
-            async function (event) {
-
-                event.preventDefault();
-
-                const originalText =
-                    submitButton.innerHTML;
-
-                submitButton.disabled = true;
-
-                submitButton.innerHTML =
-                    '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Envoi en cours...';
+        const submitLoader =
+            document.getElementById('submit-loader');
 
 
-                try {
+        function cleanInput(value) {
 
-                    const formData =
-                        new FormData(contactForm);
+            return value
+                .replace(/[<>]/g, '')
+                .trim();
 
-
-                    const response =
-                        await fetch(
-                            'https://api.web3forms.com/submit',
-                            {
-                                method: 'POST',
-                                body: formData
-                            }
-                        );
+        }
 
 
-                    const data =
-                        await response.json();
+        function isValidEmail(email) {
+
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        }
 
 
-                    if (data.success) {
+        function containsDangerousCode(value) {
 
-                        contactForm.reset();
+            const dangerousPattern =
+                /<script|javascript:|onerror\s*=|onload\s*=|<iframe|<object|<embed/i;
 
-                        showToast(
-                            'Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.'
-                        );
+            return dangerousPattern.test(value);
 
-                    } else {
+        }
 
-                        showToast(
-                            'Une erreur est survenue. Veuillez réessayer.'
-                        );
 
-                    }
+        contactForm.addEventListener('submit', async function (event) {
 
-                } catch (error) {
+            event.preventDefault();
 
-                    showToast(
-                        'Impossible d’envoyer le message. Vérifiez votre connexion.'
+
+            const nameInput =
+                document.getElementById('name');
+
+            const emailInput =
+                document.getElementById('email');
+
+            const messageInput =
+                document.getElementById('message');
+
+
+            const name =
+                cleanInput(nameInput.value);
+
+            const email =
+                cleanInput(emailInput.value);
+
+            const message =
+                cleanInput(messageInput.value);
+
+
+            nameInput.value = name;
+            emailInput.value = email;
+            messageInput.value = message;
+
+
+            if (name.length < 2) {
+
+                showToast('Veuillez entrer un nom valide.');
+
+                nameInput.focus();
+
+                return;
+            }
+
+
+            if (!isValidEmail(email)) {
+
+                showToast('Veuillez entrer une adresse e-mail valide.');
+
+                emailInput.focus();
+
+                return;
+            }
+
+
+            if (message.length < 10) {
+
+                showToast('Votre message doit contenir au moins 10 caractères.');
+
+                messageInput.focus();
+
+                return;
+            }
+
+
+            if (
+                containsDangerousCode(name) ||
+                containsDangerousCode(email) ||
+                containsDangerousCode(message)
+            ) {
+
+                showToast('Votre message contient du contenu non autorisé.');
+
+                return;
+            }
+
+
+            submitButton.disabled = true;
+
+            submitText.textContent = 'Envoi en cours...';
+
+            submitLoader.classList.remove('hidden');
+
+
+            try {
+
+                const formData =
+                    new FormData(contactForm);
+
+                const response =
+                    await fetch(
+                        'https://api.web3forms.com/submit',
+                        {
+                            method: 'POST',
+                            body: formData
+                        }
                     );
 
-                } finally {
 
-                    submitButton.disabled = false;
+                const result =
+                    await response.json();
 
-                    submitButton.innerHTML =
-                        originalText;
+
+                if (result.success) {
+
+                    showToast('Message envoyé avec succès !');
+
+                    contactForm.reset();
+
+                } else {
+
+                    showToast(
+                        'Une erreur est survenue. Veuillez réessayer.'
+                    );
 
                 }
 
+            } catch (error) {
+
+                showToast(
+                    'Impossible d’envoyer le message pour le moment.'
+                );
+
+            } finally {
+
+                submitButton.disabled = false;
+
+                submitText.textContent =
+                    'Envoyer le message';
+
+                submitLoader.classList.add('hidden');
+
             }
-        );
+
+        });
 
 
-        /* =================================================
-           EXPERIENCE CAROUSEL
-        ================================================== */
+        /* =========================================================
+           CAROUSEL EXPÉRIENCE
+           ========================================================= */
 
         const experienceCarousel =
-            document.querySelector('.experience-carousel');
+            document.getElementById('experience-carousel');
 
         const experienceTrack =
             document.getElementById('experience-track');
@@ -1881,62 +1667,252 @@
 
 
         let carouselOffset = 0;
+
         let isDragging = false;
+
         let startX = 0;
+
         let startOffset = 0;
-        let animationFrame;
-        let lastTime = 0;
+
+        let animationFrame = null;
+
+        let lastTime = null;
+
         let dragMoved = false;
 
+        let isHoveringCarousel = false;
 
-        function getCardWidth() {
 
-            const card =
-                experienceTrack.querySelector('.experience-card');
+        /* =========================================================
+           LARGEUR D'UNE SÉRIE
+           ========================================================= */
 
-            if (!card) {
-                return 414;
+        function getOriginalSetWidth() {
+
+            const cards =
+                experienceTrack.querySelectorAll('.experience-card');
+
+            if (cards.length < 4) {
+                return 0;
             }
 
-            return card.offsetWidth + 24;
+
+            let width = 0;
+
+
+            for (let i = 0; i < 4; i++) {
+
+                width +=
+                    cards[i].offsetWidth + 24;
+
+            }
+
+
+            return width;
+
         }
 
 
-        function moveCarousel(value) {
+        /* =========================================================
+           NORMALISATION DE LA POSITION
+           ========================================================= */
 
-            carouselOffset += value;
+        function normalizeCarouselPosition() {
+
+            const setWidth =
+                getOriginalSetWidth();
+
+
+            if (!setWidth) {
+                return;
+            }
+
+
+            while (carouselOffset <= -setWidth) {
+
+                carouselOffset += setWidth;
+
+            }
+
+
+            while (carouselOffset > 0) {
+
+                carouselOffset -= setWidth;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           UPDATE
+           ========================================================= */
+
+        function updateCarousel() {
 
             experienceTrack.style.transform =
-                `translateX(${carouselOffset}px)`;
+                `translate3d(${carouselOffset}px, 0, 0)`;
 
         }
 
+
+        /* =========================================================
+           ANIMATION AUTOMATIQUE
+           ========================================================= */
+
+        function animateCarousel(timestamp) {
+
+            if (lastTime === null) {
+
+                lastTime = timestamp;
+
+            }
+
+
+            const delta =
+                timestamp - lastTime;
+
+            lastTime = timestamp;
+
+
+            if (
+                !isDragging &&
+                !isHoveringCarousel
+            ) {
+
+                /*
+                 * Vitesse du carousel
+                 */
+                carouselOffset -=
+                    (delta * 28) / 1000;
+
+            }
+
+
+            normalizeCarouselPosition();
+
+            updateCarousel();
+
+
+            animationFrame =
+                requestAnimationFrame(animateCarousel);
+
+        }
+
+
+        animationFrame =
+            requestAnimationFrame(animateCarousel);
+
+
+        /* =========================================================
+           PAUSE AU SURVOL
+           ========================================================= */
+
+        experienceCarousel.addEventListener(
+            'mouseenter',
+            function () {
+
+                isHoveringCarousel = true;
+
+            }
+        );
+
+
+        experienceCarousel.addEventListener(
+            'mouseleave',
+            function () {
+
+                isHoveringCarousel = false;
+
+            }
+        );
+
+
+        /* =========================================================
+           BOUTON PREVIOUS
+           ========================================================= */
 
         experiencePrev.addEventListener(
             'click',
             function () {
 
-                moveCarousel(getCardWidth());
+                const card =
+                    experienceTrack.querySelector(
+                        '.experience-card'
+                    );
+
+
+                if (!card) {
+                    return;
+                }
+
+
+                const cardWidth =
+                    card.offsetWidth + 24;
+
+
+                carouselOffset += cardWidth;
+
+                normalizeCarouselPosition();
+
+                updateCarousel();
+
+                lastTime = performance.now();
 
             }
         );
 
+
+        /* =========================================================
+           BOUTON NEXT
+           ========================================================= */
 
         experienceNext.addEventListener(
             'click',
             function () {
 
-                moveCarousel(-getCardWidth());
+                const card =
+                    experienceTrack.querySelector(
+                        '.experience-card'
+                    );
+
+
+                if (!card) {
+                    return;
+                }
+
+
+                const cardWidth =
+                    card.offsetWidth + 24;
+
+
+                carouselOffset -= cardWidth;
+
+                normalizeCarouselPosition();
+
+                updateCarousel();
+
+                lastTime = performance.now();
 
             }
         );
 
 
-        /* DRAG SOURIS */
+        /* =========================================================
+           SOURIS : DÉBUT DU GLISSEMENT
+           ========================================================= */
 
         experienceCarousel.addEventListener(
             'mousedown',
             function (event) {
+
+                /*
+                 * Seulement clic gauche
+                 */
+                if (event.button !== 0) {
+                    return;
+                }
+
 
                 isDragging = true;
 
@@ -1946,14 +1922,23 @@
 
                 startOffset = carouselOffset;
 
-                experienceCarousel.style.cursor =
-                    'grabbing';
+                lastTime = performance.now();
 
-                cancelAnimationFrame(animationFrame);
+
+                experienceCarousel.classList.add(
+                    'dragging'
+                );
+
+
+                event.preventDefault();
 
             }
         );
 
+
+        /* =========================================================
+           SOURIS : DÉPLACEMENT
+           ========================================================= */
 
         window.addEventListener(
             'mousemove',
@@ -1963,22 +1948,33 @@
                     return;
                 }
 
+
                 const delta =
                     event.clientX - startX;
 
+
                 if (Math.abs(delta) > 5) {
+
                     dragMoved = true;
+
                 }
+
 
                 carouselOffset =
                     startOffset + delta;
 
-                experienceTrack.style.transform =
-                    `translateX(${carouselOffset}px)`;
+
+                normalizeCarouselPosition();
+
+                updateCarousel();
 
             }
         );
 
+
+        /* =========================================================
+           SOURIS : FIN DU GLISSEMENT
+           ========================================================= */
 
         window.addEventListener(
             'mouseup',
@@ -1988,22 +1984,68 @@
                     return;
                 }
 
+
                 isDragging = false;
 
-                experienceCarousel.style.cursor =
-                    'grab';
 
-                startCarouselAnimation();
+                experienceCarousel.classList.remove(
+                    'dragging'
+                );
+
+
+                lastTime = performance.now();
+
+
+                /*
+                 * Permet d'empêcher le clic juste après
+                 * un vrai déplacement.
+                 */
+                setTimeout(function () {
+
+                    dragMoved = false;
+
+                }, 80);
 
             }
         );
 
 
-        /* TOUCH */
+        /* =========================================================
+           SÉCURITÉ SI LA SOURIS SORT DE LA PAGE
+           ========================================================= */
+
+        window.addEventListener(
+            'blur',
+            function () {
+
+                if (isDragging) {
+
+                    isDragging = false;
+
+                    experienceCarousel.classList.remove(
+                        'dragging'
+                    );
+
+                    lastTime = performance.now();
+
+                }
+
+            }
+        );
+
+
+        /* =========================================================
+           MOBILE / TOUCH
+           ========================================================= */
 
         experienceCarousel.addEventListener(
             'touchstart',
             function (event) {
+
+                if (!event.touches.length) {
+                    return;
+                }
+
 
                 isDragging = true;
 
@@ -2015,7 +2057,13 @@
                 startOffset =
                     carouselOffset;
 
-                cancelAnimationFrame(animationFrame);
+                lastTime =
+                    performance.now();
+
+
+                experienceCarousel.classList.add(
+                    'dragging'
+                );
 
             },
             {
@@ -2028,22 +2076,36 @@
             'touchmove',
             function (event) {
 
-                if (!isDragging) {
+                if (
+                    !isDragging ||
+                    !event.touches.length
+                ) {
                     return;
                 }
 
+
+                const currentX =
+                    event.touches[0].clientX;
+
+
                 const delta =
-                    event.touches[0].clientX - startX;
+                    currentX - startX;
+
 
                 if (Math.abs(delta) > 5) {
+
                     dragMoved = true;
+
                 }
+
 
                 carouselOffset =
                     startOffset + delta;
 
-                experienceTrack.style.transform =
-                    `translateX(${carouselOffset}px)`;
+
+                normalizeCarouselPosition();
+
+                updateCarousel();
 
             },
             {
@@ -2056,66 +2118,53 @@
             'touchend',
             function () {
 
+                if (!isDragging) {
+                    return;
+                }
+
+
                 isDragging = false;
 
-                startCarouselAnimation();
+
+                experienceCarousel.classList.remove(
+                    'dragging'
+                );
+
+
+                lastTime =
+                    performance.now();
+
+
+                setTimeout(function () {
+
+                    dragMoved = false;
+
+                }, 80);
 
             }
         );
 
 
-        /* ANIMATION AUTOMATIQUE */
+        experienceCarousel.addEventListener(
+            'touchcancel',
+            function () {
 
-        function startCarouselAnimation() {
+                isDragging = false;
 
-            lastTime = performance.now();
+                experienceCarousel.classList.remove(
+                    'dragging'
+                );
 
-            function animate(timestamp) {
-
-                if (isDragging) {
-                    return;
-                }
-
-                const delta =
-                    timestamp - lastTime;
-
-                lastTime = timestamp;
-
-                carouselOffset -=
-                    (delta * 28) / 1000;
-
-                const cardWidth =
-                    getCardWidth();
-
-                if (
-                    Math.abs(carouselOffset) >
-                    cardWidth * 4
-                ) {
-
-                    carouselOffset = 0;
-
-                }
-
-                experienceTrack.style.transform =
-                    `translateX(${carouselOffset}px)`;
-
-                animationFrame =
-                    requestAnimationFrame(animate);
+                lastTime =
+                    performance.now();
 
             }
-
-            animationFrame =
-                requestAnimationFrame(animate);
-
-        }
+        );
 
 
-        startCarouselAnimation();
-
-
-        /* =================================================
-           EMPÊCHER UN CLIC APRÈS DRAG
-        ================================================== */
+        /* =========================================================
+           EMPÊCHER LE CLIC APRÈS UN GLISSEMENT
+           ========================================================= */
 
         experienceCarousel.addEventListener(
             'click',
@@ -2135,8 +2184,46 @@
             true
         );
 
+
+        /* =========================================================
+           RESIZE
+           ========================================================= */
+
+        window.addEventListener(
+            'resize',
+            function () {
+
+                const setWidth =
+                    getOriginalSetWidth();
+
+
+                if (!setWidth) {
+                    return;
+                }
+
+
+                normalizeCarouselPosition();
+
+                updateCarousel();
+
+            }
+        );
+
+
+        /* =========================================================
+           EMPÊCHER LA SÉLECTION DE TEXTE PENDANT LE DRAG
+           ========================================================= */
+
+        experienceCarousel.addEventListener(
+            'dragstart',
+            function (event) {
+
+                event.preventDefault();
+
+            }
+        );
+
     </script>
 
 </body>
-
 </html>

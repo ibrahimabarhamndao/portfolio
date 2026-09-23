@@ -32,8 +32,7 @@
     </script>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* =========================
@@ -57,7 +56,9 @@
         ========================= */
 
         @keyframes floatingPopup {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
 
@@ -166,6 +167,14 @@
             border-radius: 10px;
         }
 
+
+        /* Cacher le popup de la photo sur mobile */
+        @media (max-width: 767px) {
+            .floating-popup {
+                display: none !important;
+            }
+        }
+
         /* =========================
            TRANSITIONS
         ========================= */
@@ -224,8 +233,7 @@
 
 
                 <!-- DESKTOP NAVIGATION -->
-                <nav id="z5l19u"
-                    class="hidden lg:flex items-center space-x-8 font-medium">
+                <nav id="z5l19u" class="hidden lg:flex items-center space-x-8 font-medium">
 
                     <a href="#accueil"
                         class="text-gray-700 dark:text-gray-200 hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">
@@ -254,27 +262,21 @@
                 <div class="flex items-center gap-3">
 
                     <!-- THEME DESKTOP -->
-                    <button id="theme-toggle"
-                        type="button"
-                        aria-label="Changer le thème"
-                        class="w-10 h-10 rounded-full flex items-center justify-center
+                    <button id="theme-toggle" type="button" aria-label="Changer le thème" class="w-10 h-10 rounded-full flex items-center justify-center
                         bg-gray-100 dark:bg-gray-800
                         text-gray-700 dark:text-yellow-300
                         hover:bg-gray-200 dark:hover:bg-gray-700
                         transition">
 
-                        <i id="theme-toggle-dark-icon"
-                            class="fa-solid fa-moon hidden text-lg"></i>
+                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-lg"></i>
 
-                        <i id="theme-toggle-light-icon"
-                            class="fa-solid fa-sun hidden text-lg"></i>
+                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-lg"></i>
 
                     </button>
 
 
                     <!-- CONTACT DESKTOP -->
-                    <a href="#contact"
-                        class="hidden sm:inline-flex lg:inline-flex
+                    <a href="#contact" class="hidden sm:inline-flex lg:inline-flex
                         px-5 py-2.5 rounded-lg
                         bg-burgundy-600 hover:bg-burgundy-700
                         text-white font-semibold
@@ -284,17 +286,13 @@
 
 
                     <!-- BURGER -->
-                    <button id="mobile-menu-button"
-                        type="button"
-                        aria-label="Ouvrir le menu"
-                        aria-expanded="false"
+                    <button id="mobile-menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
                         class="lg:hidden w-10 h-10 rounded-lg
                         bg-gray-100 dark:bg-gray-800
                         text-gray-800 dark:text-white
                         flex items-center justify-center">
 
-                        <i id="mobile-menu-icon"
-                            class="fa-solid fa-bars text-xl"></i>
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
 
                     </button>
 
@@ -307,13 +305,11 @@
                  MOBILE / TABLET MENU
             ================================================== -->
 
-            <div id="mobile-menu"
-                class="lg:hidden border-t border-gray-200 dark:border-gray-800">
+            <div id="mobile-menu" class="lg:hidden border-t border-gray-200 dark:border-gray-800">
 
                 <div class="py-5 space-y-2">
 
-                    <a href="#accueil"
-                        class="mobile-nav-link block px-4 py-3 rounded-lg
+                    <a href="#accueil" class="mobile-nav-link block px-4 py-3 rounded-lg
                         text-gray-700 dark:text-gray-200
                         hover:bg-gray-100 dark:hover:bg-gray-800
                         hover:text-burgundy-600 dark:hover:text-burgundy-400">
@@ -321,8 +317,7 @@
                         Accueil
                     </a>
 
-                    <a href="#services"
-                        class="mobile-nav-link block px-4 py-3 rounded-lg
+                    <a href="#services" class="mobile-nav-link block px-4 py-3 rounded-lg
                         text-gray-700 dark:text-gray-200
                         hover:bg-gray-100 dark:hover:bg-gray-800
                         hover:text-burgundy-600 dark:hover:text-burgundy-400">
@@ -330,8 +325,7 @@
                         Services & Compétences
                     </a>
 
-                    <a href="#experience"
-                        class="mobile-nav-link block px-4 py-3 rounded-lg
+                    <a href="#experience" class="mobile-nav-link block px-4 py-3 rounded-lg
                         text-gray-700 dark:text-gray-200
                         hover:bg-gray-100 dark:hover:bg-gray-800
                         hover:text-burgundy-600 dark:hover:text-burgundy-400">
@@ -339,8 +333,7 @@
                         Expérience
                     </a>
 
-                    <a href="#contact"
-                        class="mobile-nav-link block px-4 py-3 rounded-lg
+                    <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-lg
                         text-gray-700 dark:text-gray-200
                         hover:bg-gray-100 dark:hover:bg-gray-800
                         hover:text-burgundy-600 dark:hover:text-burgundy-400">
@@ -350,14 +343,11 @@
 
 
                     <!-- MOBILE THEME -->
-                    <button id="mobile-theme-toggle"
-                        type="button"
-                        class="w-full flex items-center px-4 py-3 rounded-lg
+                    <button id="mobile-theme-toggle" type="button" class="w-full flex items-center px-4 py-3 rounded-lg
                         text-gray-700 dark:text-gray-200
                         hover:bg-gray-100 dark:hover:bg-gray-800">
 
-                        <i id="mobile-theme-icon"
-                            class="fa-solid fa-moon mr-3"></i>
+                        <i id="mobile-theme-icon" class="fa-solid fa-moon mr-3"></i>
 
                         <span id="mobile-theme-text">
                             Mode sombre
@@ -366,8 +356,7 @@
                     </button>
 
 
-                    <a href="#contact"
-                        class="mobile-nav-link block mx-4 mt-3
+                    <a href="#contact" class="mobile-nav-link block mx-4 mt-3
                         text-center px-5 py-3 rounded-lg
                         bg-burgundy-600 hover:bg-burgundy-700
                         text-white font-semibold shadow-md">
@@ -394,8 +383,7 @@
              HERO
         ================================================== -->
 
-        <section id="accueil"
-            class="min-h-screen pt-32 pb-20
+        <section id="accueil" class="min-h-screen pt-32 pb-20
             bg-gray-50 dark:bg-gray-900">
 
             <div class="max-w-6xl mx-auto px-4">
@@ -405,15 +393,13 @@
                     <!-- TEXT -->
                     <div>
 
-                        <div
-                            class="inline-flex items-center gap-2
+                        <div class="inline-flex items-center gap-2
                             px-4 py-2 rounded-full
                             bg-burgundy-50 dark:bg-burgundy-900/30
                             text-burgundy-700 dark:text-burgundy-300
                             text-sm font-semibold mb-6">
 
-                            <span
-                                class="w-2 h-2 rounded-full bg-green-500 animate-pulse">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse">
                             </span>
 
                             Étudiant à l'École 221
@@ -421,8 +407,7 @@
                         </div>
 
 
-                        <h1
-                            class="text-4xl sm:text-5xl lg:text-6xl
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl
                             font-extrabold
                             text-gray-900 dark:text-white
                             leading-tight">
@@ -435,8 +420,7 @@
                         </h1>
 
 
-                        <h2
-                            class="mt-4 text-2xl sm:text-3xl
+                        <h2 class="mt-4 text-2xl sm:text-3xl
                             font-bold
                             text-gray-700 dark:text-gray-300">
 
@@ -445,8 +429,7 @@
                         </h2>
 
 
-                        <p
-                            class="mt-6 text-lg
+                        <p class="mt-6 text-lg
                             text-gray-600 dark:text-gray-400
                             leading-relaxed max-w-2xl">
 
@@ -462,8 +445,7 @@
                         <!-- BUTTONS -->
                         <div class="mt-8 flex flex-wrap gap-4">
 
-                            <a href="#contact"
-                                class="px-6 py-3 rounded-lg
+                            <a href="#contact" class="px-6 py-3 rounded-lg
                                 bg-burgundy-600 hover:bg-burgundy-700
                                 text-white font-semibold
                                 shadow-lg hover:shadow-xl
@@ -475,8 +457,7 @@
                             </a>
 
 
-                            <a href="#services"
-                                class="px-6 py-3 rounded-lg
+                            <a href="#services" class="px-6 py-3 rounded-lg
                                 border-2 border-burgundy-600
                                 text-burgundy-600 dark:text-burgundy-400
                                 hover:bg-burgundy-600
@@ -497,23 +478,19 @@
 
                         <div class="relative">
 
-                            <div
-                                class="w-72 h-80 sm:w-80 sm:h-96
+                            <div class="w-72 h-80 sm:w-80 sm:h-96
                                 rounded-3xl overflow-hidden
                                 bg-white dark:bg-gray-800
                                 photo-card-shadow">
 
-                                <img
-                                    src="WhatsApp Image 2026-09-23 at 11.25.29.jpeg"
-                                    alt="Sidy Barham Ndao"
+                                <img src="WhatsApp Image 2026-09-23 at 11.25.29.jpeg" alt="Sidy Barham Ndao"
                                     class="mirrored-photo w-full h-full object-cover">
 
                             </div>
 
 
                             <!-- FLOATING POPUP -->
-                            <div
-                                class="floating-popup absolute
+                            <div class="floating-popup absolute
                                 -bottom-6 -left-6
                                 bg-white dark:bg-gray-800
                                 rounded-2xl shadow-xl
@@ -523,8 +500,7 @@
 
                                 <div class="flex items-center gap-3">
 
-                                    <div
-                                        class="w-10 h-10 rounded-full
+                                    <div class="w-10 h-10 rounded-full
                                         bg-green-100 dark:bg-green-900/30
                                         flex items-center justify-center">
 
@@ -564,8 +540,7 @@
              SERVICES
         ================================================== -->
 
-        <section id="services"
-            class="py-24 bg-white dark:bg-gray-800">
+        <section id="services" class="py-24 bg-white dark:bg-gray-800">
 
             <div class="max-w-6xl mx-auto px-4">
 
@@ -575,8 +550,7 @@
                         MES COMPÉTENCES
                     </p>
 
-                    <h2
-                        class="text-3xl sm:text-4xl
+                    <h2 class="text-3xl sm:text-4xl
                         font-extrabold
                         text-gray-900 dark:text-white">
 
@@ -584,8 +558,7 @@
 
                     </h2>
 
-                    <p
-                        class="mt-5 text-gray-600 dark:text-gray-400
+                    <p class="mt-5 text-gray-600 dark:text-gray-400
                         text-lg">
 
                         Voici les domaines d'expertise et les services
@@ -601,16 +574,14 @@
 
 
                     <!-- CARD 1 -->
-                    <article
-                        class="p-7 rounded-2xl
+                    <article class="p-7 rounded-2xl
                         bg-gray-50 dark:bg-gray-900
                         border border-gray-200 dark:border-gray-700
                         hover:-translate-y-1
                         hover:shadow-xl
                         transition">
 
-                        <div
-                            class="w-14 h-14 rounded-xl
+                        <div class="w-14 h-14 rounded-xl
                             bg-burgundy-100 dark:bg-burgundy-900/40
                             text-burgundy-600 dark:text-burgundy-400
                             flex items-center justify-center text-2xl mb-5">
@@ -632,16 +603,14 @@
 
 
                     <!-- CARD 2 -->
-                    <article
-                        class="p-7 rounded-2xl
+                    <article class="p-7 rounded-2xl
                         bg-gray-50 dark:bg-gray-900
                         border border-gray-200 dark:border-gray-700
                         hover:-translate-y-1
                         hover:shadow-xl
                         transition">
 
-                        <div
-                            class="w-14 h-14 rounded-xl
+                        <div class="w-14 h-14 rounded-xl
                             bg-burgundy-100 dark:bg-burgundy-900/40
                             text-burgundy-600 dark:text-burgundy-400
                             flex items-center justify-center text-2xl mb-5">
@@ -663,16 +632,14 @@
 
 
                     <!-- CARD 3 -->
-                    <article
-                        class="p-7 rounded-2xl
+                    <article class="p-7 rounded-2xl
                         bg-gray-50 dark:bg-gray-900
                         border border-gray-200 dark:border-gray-700
                         hover:-translate-y-1
                         hover:shadow-xl
                         transition">
 
-                        <div
-                            class="w-14 h-14 rounded-xl
+                        <div class="w-14 h-14 rounded-xl
                             bg-burgundy-100 dark:bg-burgundy-900/40
                             text-burgundy-600 dark:text-burgundy-400
                             flex items-center justify-center text-2xl mb-5">
@@ -694,16 +661,14 @@
 
 
                     <!-- CARD 4 -->
-                    <article
-                        class="p-7 rounded-2xl
+                    <article class="p-7 rounded-2xl
                         bg-gray-50 dark:bg-gray-900
                         border border-gray-200 dark:border-gray-700
                         hover:-translate-y-1
                         hover:shadow-xl
                         transition">
 
-                        <div
-                            class="w-14 h-14 rounded-xl
+                        <div class="w-14 h-14 rounded-xl
                             bg-burgundy-100 dark:bg-burgundy-900/40
                             text-burgundy-600 dark:text-burgundy-400
                             flex items-center justify-center text-2xl mb-5">
@@ -725,16 +690,14 @@
 
 
                     <!-- CARD 5 -->
-                    <article
-                        class="p-7 rounded-2xl
+                    <article class="p-7 rounded-2xl
                         bg-gray-50 dark:bg-gray-900
                         border border-gray-200 dark:border-gray-700
                         hover:-translate-y-1
                         hover:shadow-xl
                         transition">
 
-                        <div
-                            class="w-14 h-14 rounded-xl
+                        <div class="w-14 h-14 rounded-xl
                             bg-burgundy-100 dark:bg-burgundy-900/40
                             text-burgundy-600 dark:text-burgundy-400
                             flex items-center justify-center text-2xl mb-5">
@@ -756,16 +719,14 @@
 
 
                     <!-- CARD 6 -->
-                    <article
-                        class="p-7 rounded-2xl
+                    <article class="p-7 rounded-2xl
                         bg-gray-50 dark:bg-gray-900
                         border border-gray-200 dark:border-gray-700
                         hover:-translate-y-1
                         hover:shadow-xl
                         transition">
 
-                        <div
-                            class="w-14 h-14 rounded-xl
+                        <div class="w-14 h-14 rounded-xl
                             bg-burgundy-100 dark:bg-burgundy-900/40
                             text-burgundy-600 dark:text-burgundy-400
                             flex items-center justify-center text-2xl mb-5">
@@ -796,8 +757,7 @@
              EXPERIENCE
         ================================================== -->
 
-        <section id="experience"
-            class="py-24 bg-gray-50 dark:bg-gray-900">
+        <section id="experience" class="py-24 bg-gray-50 dark:bg-gray-900">
 
             <div class="max-w-6xl mx-auto px-4">
 
@@ -807,8 +767,7 @@
                         MON PARCOURS
                     </p>
 
-                    <h2
-                        class="text-3xl sm:text-4xl
+                    <h2 class="text-3xl sm:text-4xl
                         font-extrabold
                         text-gray-900 dark:text-white">
 
@@ -816,8 +775,7 @@
 
                     </h2>
 
-                    <p
-                        class="mt-5 text-gray-600 dark:text-gray-400
+                    <p class="mt-5 text-gray-600 dark:text-gray-400
                         text-lg">
 
                         Mon cheminement académique et mes réalisations
@@ -830,13 +788,11 @@
 
                 <div class="experience-carousel">
 
-                    <div id="experience-track"
-                        class="experience-track">
+                    <div id="experience-track" class="experience-track">
 
 
                         <!-- CARD 1 -->
-                        <article
-                            class="experience-card
+                        <article class="experience-card
                             p-7 rounded-2xl
                             bg-white dark:bg-gray-800
                             border border-gray-200 dark:border-gray-700
@@ -844,8 +800,7 @@
 
                             <div class="flex items-center gap-3 mb-5">
 
-                                <div
-                                    class="w-12 h-12 rounded-xl
+                                <div class="w-12 h-12 rounded-xl
                                     bg-burgundy-100 dark:bg-burgundy-900/40
                                     flex items-center justify-center
                                     text-burgundy-600 dark:text-burgundy-400">
@@ -882,8 +837,7 @@
 
 
                         <!-- CARD 2 -->
-                        <article
-                            class="experience-card
+                        <article class="experience-card
                             p-7 rounded-2xl
                             bg-white dark:bg-gray-800
                             border border-gray-200 dark:border-gray-700
@@ -891,8 +845,7 @@
 
                             <div class="flex items-center gap-3 mb-5">
 
-                                <div
-                                    class="w-12 h-12 rounded-xl
+                                <div class="w-12 h-12 rounded-xl
                                     bg-burgundy-100 dark:bg-burgundy-900/40
                                     flex items-center justify-center
                                     text-burgundy-600 dark:text-burgundy-400">
@@ -924,10 +877,7 @@
                                 pour une salle de sport.
                             </p>
 
-                            <a
-                                href="https://sunugal-sport-eslp.vercel.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <a href="https://sunugal-sport-eslp.vercel.app/" target="_blank" rel="noopener noreferrer"
                                 class="text-burgundy-600 dark:text-burgundy-400 font-semibold">
 
                                 Voir le projet
@@ -939,8 +889,7 @@
 
 
                         <!-- CARD 3 -->
-                        <article
-                            class="experience-card
+                        <article class="experience-card
                             p-7 rounded-2xl
                             bg-white dark:bg-gray-800
                             border border-gray-200 dark:border-gray-700
@@ -948,8 +897,7 @@
 
                             <div class="flex items-center gap-3 mb-5">
 
-                                <div
-                                    class="w-12 h-12 rounded-xl
+                                <div class="w-12 h-12 rounded-xl
                                     bg-burgundy-100 dark:bg-burgundy-900/40
                                     flex items-center justify-center
                                     text-burgundy-600 dark:text-burgundy-400">
@@ -985,8 +933,7 @@
 
 
                         <!-- CARD 4 -->
-                        <article
-                            class="experience-card
+                        <article class="experience-card
                             p-7 rounded-2xl
                             bg-white dark:bg-gray-800
                             border border-gray-200 dark:border-gray-700
@@ -994,8 +941,7 @@
 
                             <div class="flex items-center gap-3 mb-5">
 
-                                <div
-                                    class="w-12 h-12 rounded-xl
+                                <div class="w-12 h-12 rounded-xl
                                     bg-burgundy-100 dark:bg-burgundy-900/40
                                     flex items-center justify-center
                                     text-burgundy-600 dark:text-burgundy-400">
@@ -1060,10 +1006,7 @@
                 <!-- CAROUSEL BUTTONS -->
                 <div class="flex justify-center gap-4 mt-8">
 
-                    <button id="experience-prev"
-                        type="button"
-                        aria-label="Précédent"
-                        class="w-12 h-12 rounded-full
+                    <button id="experience-prev" type="button" aria-label="Précédent" class="w-12 h-12 rounded-full
                         bg-white dark:bg-gray-800
                         border border-gray-200 dark:border-gray-700
                         shadow-md
@@ -1075,10 +1018,7 @@
                     </button>
 
 
-                    <button id="experience-next"
-                        type="button"
-                        aria-label="Suivant"
-                        class="w-12 h-12 rounded-full
+                    <button id="experience-next" type="button" aria-label="Suivant" class="w-12 h-12 rounded-full
                         bg-white dark:bg-gray-800
                         border border-gray-200 dark:border-gray-700
                         shadow-md
@@ -1100,8 +1040,7 @@
              CONTACT
         ================================================== -->
 
-        <section id="contact"
-            class="py-24 bg-white dark:bg-gray-800">
+        <section id="contact" class="py-24 bg-white dark:bg-gray-800">
 
             <div class="max-w-6xl mx-auto px-4">
 
@@ -1111,8 +1050,7 @@
                         CONTACT
                     </p>
 
-                    <h2
-                        class="text-3xl sm:text-4xl
+                    <h2 class="text-3xl sm:text-4xl
                         font-extrabold
                         text-gray-900 dark:text-white">
 
@@ -1120,8 +1058,7 @@
 
                     </h2>
 
-                    <p
-                        class="mt-5 text-gray-600 dark:text-gray-400
+                    <p class="mt-5 text-gray-600 dark:text-gray-400
                         text-lg">
 
                         Vous avez un projet, une opportunité ou une question ?
@@ -1136,39 +1073,27 @@
 
 
                     <!-- FORM -->
-                    <div
-                        class="bg-gray-50 dark:bg-gray-900
+                    <div class="bg-gray-50 dark:bg-gray-900
                         rounded-2xl p-7 sm:p-9
                         border border-gray-200 dark:border-gray-700">
 
                         <form id="contact-form">
 
-                            <input type="hidden"
-                                name="access_key"
-                                value="3e26ace8-35d4-430a-aedd-dd2e945a971d">
+                            <input type="hidden" name="access_key" value="3e26ace8-35d4-430a-aedd-dd2e945a971d">
 
-                            <input type="hidden"
-                                name="subject"
+                            <input type="hidden" name="subject"
                                 value="Nouveau message depuis le portfolio de Sidy Barham Ndao">
 
 
                             <div class="mb-5">
 
-                                <label
-                                    for="name"
-                                    class="block font-semibold mb-2">
+                                <label for="name" class="block font-semibold mb-2">
 
                                     Nom complet
 
                                 </label>
 
-                                <input
-                                    id="name"
-                                    name="name"
-                                    type="text"
-                                    required
-                                    placeholder="Votre nom"
-                                    class="w-full px-4 py-3 rounded-lg
+                                <input id="name" name="name" type="text" required placeholder="Votre nom" class="w-full px-4 py-3 rounded-lg
                                     bg-white dark:bg-gray-800
                                     border border-gray-300 dark:border-gray-700
                                     text-gray-900 dark:text-white
@@ -1180,20 +1105,13 @@
 
                             <div class="mb-5">
 
-                                <label
-                                    for="email"
-                                    class="block font-semibold mb-2">
+                                <label for="email" class="block font-semibold mb-2">
 
                                     Adresse E-mail
 
                                 </label>
 
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    required
-                                    placeholder="nom@exemple.com"
+                                <input id="email" name="email" type="email" required placeholder="nom@exemple.com"
                                     class="w-full px-4 py-3 rounded-lg
                                     bg-white dark:bg-gray-800
                                     border border-gray-300 dark:border-gray-700
@@ -1206,21 +1124,14 @@
 
                             <div class="mb-6">
 
-                                <label
-                                    for="message"
-                                    class="block font-semibold mb-2">
+                                <label for="message" class="block font-semibold mb-2">
 
                                     Message
 
                                 </label>
 
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows="6"
-                                    required
-                                    placeholder="Expliquez-moi votre projet..."
-                                    class="w-full px-4 py-3 rounded-lg
+                                <textarea id="message" name="message" rows="6" required
+                                    placeholder="Expliquez-moi votre projet..." class="w-full px-4 py-3 rounded-lg
                                     bg-white dark:bg-gray-800
                                     border border-gray-300 dark:border-gray-700
                                     text-gray-900 dark:text-white
@@ -1231,10 +1142,7 @@
                             </div>
 
 
-                            <button
-                                id="submit-button"
-                                type="submit"
-                                class="w-full px-6 py-3 rounded-lg
+                            <button id="submit-button" type="submit" class="w-full px-6 py-3 rounded-lg
                                 bg-burgundy-600 hover:bg-burgundy-700
                                 text-white font-semibold
                                 shadow-lg transition">
@@ -1258,8 +1166,7 @@
 
                             <div class="flex items-start gap-4">
 
-                                <div
-                                    class="w-12 h-12 rounded-xl
+                                <div class="w-12 h-12 rounded-xl
                                     bg-burgundy-100 dark:bg-burgundy-900/40
                                     text-burgundy-600 dark:text-burgundy-400
                                     flex items-center justify-center
@@ -1275,8 +1182,7 @@
                                         E-mail
                                     </h3>
 
-                                    <a
-                                        href="mailto:ibrahimandao2006@gmail.com"
+                                    <a href="mailto:ibrahimandao2006@gmail.com"
                                         class="text-gray-600 dark:text-gray-400 hover:text-burgundy-600">
                                         ibrahimandao2006@gmail.com
                                     </a>
@@ -1288,8 +1194,7 @@
 
                             <div class="flex items-start gap-4">
 
-                                <div
-                                    class="w-12 h-12 rounded-xl
+                                <div class="w-12 h-12 rounded-xl
                                     bg-burgundy-100 dark:bg-burgundy-900/40
                                     text-burgundy-600 dark:text-burgundy-400
                                     flex items-center justify-center
@@ -1305,8 +1210,7 @@
                                         Téléphone
                                     </h3>
 
-                                    <a
-                                        href="tel:+221763324012"
+                                    <a href="tel:+221763324012"
                                         class="text-gray-600 dark:text-gray-400 hover:text-burgundy-600">
                                         +221 76 332 40 12
                                     </a>
@@ -1318,8 +1222,7 @@
 
                             <div class="flex items-start gap-4">
 
-                                <div
-                                    class="w-12 h-12 rounded-xl
+                                <div class="w-12 h-12 rounded-xl
                                     bg-burgundy-100 dark:bg-burgundy-900/40
                                     text-burgundy-600 dark:text-burgundy-400
                                     flex items-center justify-center
@@ -1353,9 +1256,7 @@
 
                                 <div class="flex gap-3">
 
-                                    <a href="#"
-                                        aria-label="LinkedIn"
-                                        class="w-11 h-11 rounded-full
+                                    <a href="#" aria-label="LinkedIn" class="w-11 h-11 rounded-full
                                         bg-gray-100 dark:bg-gray-700
                                         flex items-center justify-center
                                         hover:bg-burgundy-600
@@ -1366,9 +1267,7 @@
                                     </a>
 
 
-                                    <a href="#"
-                                        aria-label="GitHub"
-                                        class="w-11 h-11 rounded-full
+                                    <a href="#" aria-label="GitHub" class="w-11 h-11 rounded-full
                                         bg-gray-100 dark:bg-gray-700
                                         flex items-center justify-center
                                         hover:bg-burgundy-600
@@ -1379,11 +1278,8 @@
                                     </a>
 
 
-                                    <a href="https://wa.me/221763324012"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label="WhatsApp"
-                                        class="w-11 h-11 rounded-full
+                                    <a href="https://wa.me/221763324012" target="_blank" rel="noopener noreferrer"
+                                        aria-label="WhatsApp" class="w-11 h-11 rounded-full
                                         bg-gray-100 dark:bg-gray-700
                                         flex items-center justify-center
                                         hover:bg-green-600
@@ -1414,8 +1310,7 @@
          FOOTER
     ====================================================== -->
 
-    <footer
-        class="py-8
+    <footer class="py-8
         bg-gray-900 dark:bg-black
         text-gray-300">
 
@@ -1438,17 +1333,14 @@
 
     <div class="fixed bottom-6 right-6 z-50">
 
-        <div id="popup-card"
-            class="hidden-popup absolute bottom-16 right-0
+        <div id="popup-card" class="hidden-popup absolute bottom-16 right-0
             w-72
             bg-white dark:bg-gray-800
             rounded-2xl shadow-2xl
             border border-gray-200 dark:border-gray-700
             p-5">
 
-            <button id="popup-close"
-                type="button"
-                class="absolute top-3 right-3
+            <button id="popup-close" type="button" class="absolute top-3 right-3
                 text-gray-400 hover:text-gray-700
                 dark:hover:text-white">
 
@@ -1464,11 +1356,7 @@
                 Besoin d'un renseignement ou d'une collaboration directe ?
             </p>
 
-            <a
-                href="https://wa.me/221763324012"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center justify-center gap-2
+            <a href="https://wa.me/221763324012" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2
                 w-full px-4 py-3 rounded-lg
                 bg-green-600 hover:bg-green-700
                 text-white font-semibold">
@@ -1482,10 +1370,7 @@
         </div>
 
 
-        <button id="popup-toggle"
-            type="button"
-            aria-label="WhatsApp"
-            class="w-14 h-14 rounded-full
+        <button id="popup-toggle" type="button" aria-label="WhatsApp" class="w-14 h-14 rounded-full
             bg-green-600 hover:bg-green-700
             text-white text-2xl
             shadow-xl
@@ -1503,8 +1388,7 @@
          TOAST
     ====================================================== -->
 
-    <div id="toast"
-        class="fixed top-24 right-5 z-[100]
+    <div id="toast" class="fixed top-24 right-5 z-[100]
         opacity-0 translate-x-10 pointer-events-none
         bg-gray-900 dark:bg-white
         text-white dark:text-gray-900

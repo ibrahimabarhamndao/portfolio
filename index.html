@@ -293,8 +293,9 @@
                     >
                         <option value="fr">🇫🇷 Français</option>
                         <option value="en">🇬🇧 English</option>
-                        <option value="ar">🇸🇦 العربية</option>
+                        <option value="pt">🇵🇹 Português</option>
                         <option value="es">🇪🇸 Español</option>
+                        <option value="wo">🇸🇳 Wolof</option>
                     </select>
                     <i class="fas fa-chevron-down pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-400"></i>
                 </div>
@@ -1145,6 +1146,342 @@
 
 
     </script>
+
+
+<script>
+/* ==============================
+   TRADUCTION MULTILINGUE
+   Français / English / Português / Español
+============================== */
+(() => {
+    const languageSelect = document.getElementById('language-select');
+    if (!languageSelect) return;
+
+    const translations = {
+        en: {
+            "Portfolio — Génie Logiciel": "Portfolio — Software Engineering",
+            "Accueil": "Home",
+            "Services & Compétences": "Services & Skills",
+            "Expérience": "Experience",
+            "Contact": "Contact",
+            "Contactez-moi": "Contact me",
+            "Choisir la langue": "Choose language",
+            "Changer de thème": "Change theme",
+            "Étudiant à l'École 221": "Student at École 221",
+            "Licence 1 en Génie Logiciel": "Year 1 Software Engineering Student",
+            "Passionné par le développement d'applications, la résolution de problèmes complexes et la création d'expériences numériques intuitives. Je conçois des projets web modernes et performants avec du HTML, CSS et JavaScript.": "Passionate about application development, solving complex problems, and creating intuitive digital experiences. I build modern, high-performance web projects with HTML, CSS, and JavaScript.",
+            "Prendre contact": "Get in touch",
+            "Découvrir mes compétences": "Discover my skills",
+            "Disponible": "Available",
+            "Pour vos projets web": "For your web projects",
+            "Services & Compétences": "Services & Skills",
+            "Voici les domaines d'expertise et les services sur lesquels je me concentre durant mon parcours académique et mes projets personnels.": "Here are the areas of expertise and services I focus on during my academic journey and personal projects.",
+            "Développement Web": "Web Development",
+            "Création de pages et d'interfaces web avec HTML5, CSS3, JavaScript et Tailwind CSS, avec une attention particulière à la structure, au responsive design et à l'expérience utilisateur.": "Creation of web pages and interfaces with HTML5, CSS3, JavaScript and Tailwind CSS, with particular attention to structure, responsive design and user experience.",
+            "Réseaux": "Networking",
+            "Apprentissage des fondamentaux des réseaux informatiques : modèles OSI et TCP/IP, Ethernet, IPv4, encapsulation, équipements réseau et protocoles de communication.": "Learning the fundamentals of computer networks: OSI and TCP/IP models, Ethernet, IPv4, encapsulation, network equipment and communication protocols.",
+            "UI/UX & Figma": "UI/UX & Figma",
+            "Conception de maquettes et de prototypes avec Figma pour organiser les interfaces, travailler les parcours utilisateurs et préparer la réalisation des sites et applications.": "Design of mockups and prototypes with Figma to organize interfaces, work on user journeys and prepare websites and applications.",
+            "Design graphique & Illustrator": "Graphic Design & Illustrator",
+            "Création et préparation de supports visuels, logos, éléments graphiques et compositions numériques avec Adobe Illustrator et les outils de conception graphique.": "Creation and preparation of visual materials, logos, graphic elements and digital compositions with Adobe Illustrator and graphic design tools.",
+            "Algorithmique & Programmation": "Algorithms & Programming",
+            "Travail sur la logique algorithmique, les structures de contrôle, les boucles, le pseudo-code et les bases de la programmation en C dans le cadre de la Licence 1.": "Work on algorithmic logic, control structures, loops, pseudocode and the basics of C programming as part of Year 1.",
+            "WordPress": "WordPress",
+            "Création et personnalisation de sites WordPress, organisation des pages et contenus, mise en place d'interfaces adaptées aux besoins d'un projet.": "Creation and customization of WordPress websites, organization of pages and content, and implementation of interfaces adapted to project needs.",
+            "Parcours & Expérience": "Background & Experience",
+            "Mon cheminement académique et mes réalisations durant ma formation en Génie Logiciel.": "My academic journey and achievements during my Software Engineering training.",
+            "2025 - Présent": "2025 - Present",
+            "Formation aux fondamentaux du génie logiciel, développement web, algorithmique, réseaux, conception d'interfaces et gestion de projets informatiques.": "Training in software engineering fundamentals, web development, algorithms, networking, interface design and IT project management.",
+            "Projet L1": "Year 1 Project",
+            "Site web de salle de sport": "Fitness Center Website",
+            "Réalisation d'un site web responsive pour une salle de sport avec présentation des programmes, tarifs, coachs, témoignages et formulaire de contact.": "Creation of a responsive website for a fitness center featuring programs, pricing, coaches, testimonials and a contact form.",
+            "Projet WordPress": "WordPress Project",
+            "Projet d'intégration WordPress": "WordPress Integration Project",
+            "Mise en place et personnalisation d'un site WordPress autour d'un projet dédié aux animaux, avec organisation des contenus et des différentes pages du site.": "Implementation and customization of a WordPress website for an animal-focused project, with organized content and pages.",
+            "Projet Web": "Web Project",
+            "Conception d'un site hôtelier": "Hotel Website Design",
+            "Conception d'une présence web pour un hôtel avec mise en valeur de l'établissement, de ses services et de son identité visuelle à travers une interface moderne.": "Design of a web presence for a hotel showcasing the establishment, its services and visual identity through a modern interface.",
+            "Expérience précédente": "Previous experience",
+            "Expérience suivante": "Next experience",
+            "Me Contacter": "Contact Me",
+            "Vous avez un projet, une opportunité ou une question ? N'hésitez pas à me laisser un message.": "Do you have a project, an opportunity or a question? Feel free to leave me a message.",
+            "Nom complet": "Full name",
+            "Votre nom": "Your name",
+            "Adresse E-mail": "Email address",
+            "nom@exemple.com": "name@example.com",
+            "Message": "Message",
+            "Expliquez-moi votre projet...": "Tell me about your project...",
+            "Envoyer le message": "Send message",
+            "Coordonnées": "Contact details",
+            "E-mail": "Email",
+            "Téléphone": "Phone",
+            "Établissement": "Institution",
+            "Suivez-moi": "Follow me",
+            "Discussion Rapide": "Quick Chat",
+            "Besoin d'un renseignement ou d'une collaboration directe ?": "Need information or direct collaboration?",
+            "Discuter sur WhatsApp": "Chat on WhatsApp",
+            "Tous droits réservés.": "All rights reserved.",
+            "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.": "Message sent successfully! I will get back to you as soon as possible."
+        },
+
+        wo: {
+            "Portfolio — Génie Logiciel": "Portfolio — Génie Logiciel",
+            "Accueil": "Dalal ak jàmm",
+            "Services & Compétences": "Serwiis ak xam-xam",
+            "Expérience": "Jëfandikoo ak expérience",
+            "Contact": "Jokkoo",
+            "Contactez-moi": "Jokkoo ak man",
+            "Choisir la langue": "Tann làkk",
+            "Changer de thème": "Soppi melokaan",
+            "Étudiant à l'École 221": "Jàngkat ci École 221",
+            "Licence 1 en Génie Logiciel": "Licence 1 ci Génie Logiciel",
+            "Passionné par le développement d'applications, la résolution de problèmes complexes et la création d'expériences numériques intuitives. Je conçois des projets web modernes et performants avec du HTML, CSS et JavaScript.": "Dama bëgg defar aplikasyon, seet ak saafara jafe-jafe, te sos expérience numérique yu yomb. Dama def projets web yu bees ak yu am doole ak HTML, CSS ak JavaScript.",
+            "Prendre contact": "Jokkoo ak man",
+            "Découvrir mes compétences": "Xool sama xam-xam",
+            "Disponible": "Jàppandi",
+            "Pour vos projets web": "Ngir seen projets web",
+            "Voici les domaines d'expertise et les services sur lesquels je me concentre durant mon parcours académique et mes projets personnels.": "Yii ay domaine ak serwiis yi ma di jëfandikoo ci sama njàng ak sama projets boppam.",
+            "Développement Web": "Développement Web",
+            "Création de pages et d'interfaces web avec HTML5, CSS3, JavaScript et Tailwind CSS, avec une attention particulière à la structure, au responsive design et à l'expérience utilisateur.": "Defar xët ak interface web ak HTML5, CSS3, JavaScript ak Tailwind CSS, te ma fonk structure, responsive design ak expérience utilisateur.",
+            "Réseaux": "Réseaux",
+            "Apprentissage des fondamentaux des réseaux informatiques : modèles OSI et TCP/IP, Ethernet, IPv4, encapsulation, équipements réseau et protocoles de communication.": "Jàng njabootu réseaux informatiques: OSI ak TCP/IP, Ethernet, IPv4, encapsulation, jumtukaay yi ak protocoles de communication.",
+            "UI/UX & Figma": "UI/UX ak Figma",
+            "Conception de maquettes et de prototypes avec Figma pour organiser les interfaces, travailler les parcours utilisateurs et préparer la réalisation des sites et applications.": "Defar maquettes ak prototypes ak Figma ngir tëral interfaces, parcours utilisateur ak waajal sites ak applications.",
+            "Design graphique & Illustrator": "Design graphique ak Illustrator",
+            "Création et préparation de supports visuels, logos, éléments graphiques et compositions numériques avec Adobe Illustrator et les outils de conception graphique.": "Defar supports visuels, logos, éléments graphiques ak compositions numériques ak Adobe Illustrator ak jumtukaay yu design.",
+            "Algorithmique & Programmation": "Algorithmique ak Programmation",
+            "Travail sur la logique algorithmique, les structures de contrôle, les boucles, le pseudo-code et les bases de la programmation en C dans le cadre de la Licence 1.": "Jëf ci logique algorithmique, structures de contrôle, boucles, pseudo-code ak njabootu programmation C ci Licence 1.",
+            "WordPress": "WordPress",
+            "Création et personnalisation de sites WordPress, organisation des pages et contenus, mise en place d'interfaces adaptées aux besoins d'un projet.": "Defar ak soppi sites WordPress, tëral xët ak contenu, te def interfaces yu méngoo ak soxla yu projet.",
+            "Parcours & Expérience": "Parcours ak Expérience",
+            "Mon cheminement académique et mes réalisations durant ma formation en Génie Logiciel.": "Sama njàng ak sama réalisations ci sama formation Génie Logiciel.",
+            "2025 - Présent": "2025 - Leegi",
+            "Formation aux fondamentaux du génie logiciel, développement web, algorithmique, réseaux, conception d'interfaces et gestion de projets informatiques.": "Jàng njabootu génie logiciel, développement web, algorithmique, réseaux, conception d'interfaces ak gestion de projets informatiques.",
+            "Projet L1": "Projet L1",
+            "Site web de salle de sport": "Site web bu salle de sport",
+            "Réalisation d'un site web responsive pour une salle de sport avec présentation des programmes, tarifs, coachs, témoignages et formulaire de contact.": "Defar site web responsive bu salle de sport, di wone programmes, tarifs, coachs, témoignages ak formulaire de contact.",
+            "Projet WordPress": "Projet WordPress",
+            "Projet d'intégration WordPress": "Projet intégration WordPress",
+            "Mise en place et personnalisation d'un site WordPress autour d'un projet dédié aux animaux, avec organisation des contenus et des différentes pages du site.": "Defar ak soppi site WordPress bu projet bi jëm ci mbay mi, ak tëral contenu ak xët yi.",
+            "Projet Web": "Projet Web",
+            "Conception d'un site hôtelier": "Defar site bu hôtel",
+            "Conception d'une présence web pour un hôtel avec mise en valeur de l'établissement, de ses services et de son identité visuelle à travers une interface moderne.": "Defar présence web bu hôtel, di wone établissement bi, serwiis yi ak identité visuelle ci interface bu bees.",
+            "Expérience précédente": "Expérience ji weesu",
+            "Expérience suivante": "Expérience ji topp",
+            "Me Contacter": "Jokkoo ak man",
+            "Vous avez un projet, une opportunité ou une question ? N'hésitez pas à me laisser un message.": "Am nga projet, opportunité walla laaj? Bul ragal, bindal ma message.",
+            "Nom complet": "Tur bu mat sëkk",
+            "Votre nom": "Sa tur",
+            "Adresse E-mail": "Adresse E-mail",
+            "nom@exemple.com": "tur@exemple.com",
+            "Message": "Message",
+            "Expliquez-moi votre projet...": "Leeralal ma sa projet...",
+            "Envoyer le message": "Yónnee message bi",
+            "Coordonnées": "Jokkoo yi",
+            "E-mail": "E-mail",
+            "Téléphone": "Telefon",
+            "Établissement": "Établissement",
+            "Suivez-moi": "Toppal ma",
+            "Discussion Rapide": "Waxtaan bu gaaw",
+            "Besoin d'un renseignement ou d'une collaboration directe ?": "Soxla nga xibaar walla liggéeyandoo ak man?",
+            "Discuter sur WhatsApp": "Waxtaan ci WhatsApp",
+            "Tous droits réservés.": "Sañ-sañ yépp ñu leen aar.",
+            "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.": "Message bi dem na bu baax! Dina la tontu ci lu gàtt."
+        },
+        es: {
+            "Portfolio — Génie Logiciel": "Portfolio — Ingeniería de Software",
+            "Accueil": "Inicio",
+            "Services & Compétences": "Servicios y habilidades",
+            "Expérience": "Experiencia",
+            "Contact": "Contacto",
+            "Contactez-moi": "Contáctame",
+            "Choisir la langue": "Elegir idioma",
+            "Changer de thème": "Cambiar tema",
+            "Étudiant à l'École 221": "Estudiante de École 221",
+            "Licence 1 en Génie Logiciel": "Primer año de Ingeniería de Software",
+            "Passionné par le développement d'applications, la résolution de problèmes complexes et la création d'expériences numériques intuitives. Je conçois des projets web modernes et performants avec du HTML, CSS et JavaScript.": "Apasionado por el desarrollo de aplicaciones, la resolución de problemas complejos y la creación de experiencias digitales intuitivas. Desarrollo proyectos web modernos y eficientes con HTML, CSS y JavaScript.",
+            "Prendre contact": "Contactar",
+            "Découvrir mes compétences": "Descubrir mis habilidades",
+            "Disponible": "Disponible",
+            "Pour vos projets web": "Para sus proyectos web",
+            "Voici les domaines d'expertise et les services sur lesquels je me concentre durant mon parcours académique et mes projets personnels.": "Estas son las áreas de especialización y los servicios en los que me centro durante mi formación académica y mis proyectos personales.",
+            "Développement Web": "Desarrollo Web",
+            "Création de pages et d'interfaces web avec HTML5, CSS3, JavaScript et Tailwind CSS, avec une attention particulière à la structure, au responsive design et à l'expérience utilisateur.": "Creación de páginas e interfaces web con HTML5, CSS3, JavaScript y Tailwind CSS, con especial atención a la estructura, el diseño responsive y la experiencia de usuario.",
+            "Réseaux": "Redes",
+            "Apprentissage des fondamentaux des réseaux informatiques : modèles OSI et TCP/IP, Ethernet, IPv4, encapsulation, équipements réseau et protocoles de communication.": "Aprendizaje de los fundamentos de las redes informáticas: modelos OSI y TCP/IP, Ethernet, IPv4, encapsulación, equipos de red y protocolos de comunicación.",
+            "UI/UX & Figma": "UI/UX y Figma",
+            "Conception de maquettes et de prototypes avec Figma pour organiser les interfaces, travailler les parcours utilisateurs et préparer la réalisation des sites et applications.": "Diseño de maquetas y prototipos con Figma para organizar interfaces, trabajar los recorridos de usuario y preparar sitios y aplicaciones.",
+            "Design graphique & Illustrator": "Diseño gráfico e Illustrator",
+            "Création et préparation de supports visuels, logos, éléments graphiques et compositions numériques avec Adobe Illustrator et les outils de conception graphique.": "Creación y preparación de materiales visuales, logotipos, elementos gráficos y composiciones digitales con Adobe Illustrator y herramientas de diseño gráfico.",
+            "Algorithmique & Programmation": "Algoritmia y Programación",
+            "Travail sur la logique algorithmique, les structures de contrôle, les boucles, le pseudo-code et les bases de la programmation en C dans le cadre de la Licence 1.": "Trabajo sobre lógica algorítmica, estructuras de control, bucles, pseudocódigo y fundamentos de programación en C durante el primer año.",
+            "WordPress": "WordPress",
+            "Création et personnalisation de sites WordPress, organisation des pages et contenus, mise en place d'interfaces adaptées aux besoins d'un projet.": "Creación y personalización de sitios WordPress, organización de páginas y contenidos e implementación de interfaces adaptadas a las necesidades de un proyecto.",
+            "Parcours & Expérience": "Trayectoria y experiencia",
+            "Mon cheminement académique et mes réalisations durant ma formation en Génie Logiciel.": "Mi trayectoria académica y mis logros durante mi formación en Ingeniería de Software.",
+            "2025 - Présent": "2025 - Actualidad",
+            "Formation aux fondamentaux du génie logiciel, développement web, algorithmique, réseaux, conception d'interfaces et gestion de projets informatiques.": "Formación en fundamentos de ingeniería de software, desarrollo web, algoritmos, redes, diseño de interfaces y gestión de proyectos informáticos.",
+            "Projet L1": "Proyecto de primer año",
+            "Site web de salle de sport": "Sitio web de gimnasio",
+            "Réalisation d'un site web responsive pour une salle de sport avec présentation des programmes, tarifs, coachs, témoignages et formulaire de contact.": "Creación de un sitio web responsive para un gimnasio con programas, tarifas, entrenadores, testimonios y formulario de contacto.",
+            "Projet WordPress": "Proyecto WordPress",
+            "Projet d'intégration WordPress": "Proyecto de integración WordPress",
+            "Mise en place et personnalisation d'un site WordPress autour d'un projet dédié aux animaux, avec organisation des contenus et des différentes pages du site.": "Implementación y personalización de un sitio WordPress para un proyecto dedicado a los animales, con organización de contenidos y páginas.",
+            "Projet Web": "Proyecto Web",
+            "Conception d'un site hôtelier": "Diseño de sitio hotelero",
+            "Conception d'une présence web pour un hôtel avec mise en valeur de l'établissement, de ses services et de son identité visuelle à travers une interface moderne.": "Diseño de una presencia web para un hotel destacando el establecimiento, sus servicios e identidad visual mediante una interfaz moderna.",
+            "Expérience précédente": "Experiencia anterior",
+            "Expérience suivante": "Siguiente experiencia",
+            "Me Contacter": "Contáctame",
+            "Vous avez un projet, une opportunité ou une question ? N'hésitez pas à me laisser un message.": "¿Tienes un proyecto, una oportunidad o una pregunta? No dudes en dejarme un mensaje.",
+            "Nom complet": "Nombre completo",
+            "Votre nom": "Tu nombre",
+            "Adresse E-mail": "Correo electrónico",
+            "nom@exemple.com": "nombre@ejemplo.com",
+            "Message": "Mensaje",
+            "Expliquez-moi votre projet...": "Cuéntame sobre tu proyecto...",
+            "Envoyer le message": "Enviar mensaje",
+            "Coordonnées": "Datos de contacto",
+            "E-mail": "Correo electrónico",
+            "Téléphone": "Teléfono",
+            "Établissement": "Institución",
+            "Suivez-moi": "Sígueme",
+            "Discussion Rapide": "Chat rápido",
+            "Besoin d'un renseignement ou d'une collaboration directe ?": "¿Necesitas información o una colaboración directa?",
+            "Discuter sur WhatsApp": "Chatear por WhatsApp",
+            "Tous droits réservés.": "Todos los derechos reservados.",
+            "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.": "¡Mensaje enviado correctamente! Te responderé lo antes posible."
+        },
+        pt: {
+            "Portfolio — Génie Logiciel": "Portfólio — Engenharia de Software",
+            "Accueil": "Início",
+            "Services & Compétences": "Serviços e Competências",
+            "Expérience": "Experiência",
+            "Contact": "Contacto",
+            "Contactez-moi": "Contacte-me",
+            "Choisir la langue": "Escolher idioma",
+            "Changer de thème": "Alterar tema",
+            "Étudiant à l'École 221": "Estudante da École 221",
+            "Licence 1 en Génie Logiciel": "Estudante do 1.º ano de Engenharia de Software",
+            "Passionné par le développement d'applications, la résolution de problèmes complexes et la création d'expériences numériques intuitives. Je conçois des projets web modernes et performants avec du HTML, CSS et JavaScript.": "Apaixonado pelo desenvolvimento de aplicações, pela resolução de problemas complexos e pela criação de experiências digitais intuitivas. Desenvolvo projetos web modernos e eficientes com HTML, CSS e JavaScript.",
+            "Prendre contact": "Entrar em contacto",
+            "Découvrir mes compétences": "Descobrir as minhas competências",
+            "Disponible": "Disponível",
+            "Pour vos projets web": "Para os seus projetos web",
+            "Voici les domaines d'expertise et les services sur lesquels je me concentre durant mon parcours académique et mes projets personnels.": "Estas são as áreas de conhecimento e os serviços nos quais me concentro durante o meu percurso académico e os meus projetos pessoais.",
+            "Développement Web": "Desenvolvimento Web",
+            "Création de pages et d'interfaces web avec HTML5, CSS3, JavaScript et Tailwind CSS, avec une attention particulière à la structure, au responsive design et à l'expérience utilisateur.": "Criação de páginas e interfaces web com HTML5, CSS3, JavaScript e Tailwind CSS, com especial atenção à estrutura, ao design responsivo e à experiência do utilizador.",
+            "Réseaux": "Redes",
+            "Apprentissage des fondamentaux des réseaux informatiques : modèles OSI et TCP/IP, Ethernet, IPv4, encapsulation, équipements réseau et protocoles de communication.": "Aprendizagem dos fundamentos das redes informáticas: modelos OSI e TCP/IP, Ethernet, IPv4, encapsulamento, equipamentos de rede e protocolos de comunicação.",
+            "UI/UX & Figma": "UI/UX e Figma",
+            "Conception de maquettes et de prototypes avec Figma pour organiser les interfaces, travailler les parcours utilisateurs et préparer la réalisation des sites et applications.": "Conceção de maquetes e protótipos com Figma para organizar interfaces, trabalhar os percursos dos utilizadores e preparar a realização de sites e aplicações.",
+            "Design graphique & Illustrator": "Design gráfico e Illustrator",
+            "Création et préparation de supports visuels, logos, éléments graphiques et compositions numériques avec Adobe Illustrator et les outils de conception graphique.": "Criação e preparação de materiais visuais, logótipos, elementos gráficos e composições digitais com Adobe Illustrator e ferramentas de design gráfico.",
+            "Algorithmique & Programmation": "Algoritmos e Programação",
+            "Travail sur la logique algorithmique, les structures de contrôle, les boucles, le pseudo-code et les bases de la programmation en C dans le cadre de la Licence 1.": "Trabalho com lógica algorítmica, estruturas de controlo, ciclos, pseudocódigo e fundamentos da programação em C no âmbito do 1.º ano.",
+            "WordPress": "WordPress",
+            "Création et personnalisation de sites WordPress, organisation des pages et contenus, mise en place d'interfaces adaptées aux besoins d'un projet.": "Criação e personalização de sites WordPress, organização de páginas e conteúdos e implementação de interfaces adaptadas às necessidades de um projeto.",
+            "Parcours & Expérience": "Percurso e Experiência",
+            "Mon cheminement académique et mes réalisations durant ma formation en Génie Logiciel.": "O meu percurso académico e as minhas realizações durante a formação em Engenharia de Software.",
+            "2025 - Présent": "2025 - Presente",
+            "Formation aux fondamentaux du génie logiciel, développement web, algorithmique, réseaux, conception d'interfaces et gestion de projets informatiques.": "Formação nos fundamentos da engenharia de software, desenvolvimento web, algoritmos, redes, conceção de interfaces e gestão de projetos informáticos.",
+            "Projet L1": "Projeto do 1.º ano",
+            "Site web de salle de sport": "Site web de ginásio",
+            "Réalisation d'un site web responsive pour une salle de sport avec présentation des programmes, tarifs, coachs, témoignages et formulaire de contact.": "Desenvolvimento de um site web responsivo para um ginásio com apresentação de programas, preços, treinadores, testemunhos e formulário de contacto.",
+            "Projet WordPress": "Projeto WordPress",
+            "Projet d'intégration WordPress": "Projeto de integração WordPress",
+            "Mise en place et personnalisation d'un site WordPress autour d'un projet dédié aux animaux, avec organisation des contenus et des différentes pages du site.": "Criação e personalização de um site WordPress para um projeto dedicado aos animais, com organização dos conteúdos e das diferentes páginas.",
+            "Projet Web": "Projeto Web",
+            "Conception d'un site hôtelier": "Conceção de um site hoteleiro",
+            "Conception d'une présence web pour un hôtel avec mise en valeur de l'établissement, de ses services et de son identité visuelle à travers une interface moderne.": "Conceção de uma presença web para um hotel, destacando o estabelecimento, os seus serviços e a sua identidade visual através de uma interface moderna.",
+            "Expérience précédente": "Experiência anterior",
+            "Expérience suivante": "Experiência seguinte",
+            "Me Contacter": "Contactar-me",
+            "Vous avez un projet, une opportunité ou une question ? N'hésitez pas à me laisser un message.": "Tem um projeto, uma oportunidade ou uma pergunta? Não hesite em deixar-me uma mensagem.",
+            "Nom complet": "Nome completo",
+            "Votre nom": "O seu nome",
+            "Adresse E-mail": "Endereço de e-mail",
+            "nom@exemple.com": "nome@exemplo.com",
+            "Message": "Mensagem",
+            "Expliquez-moi votre projet...": "Explique-me o seu projeto...",
+            "Envoyer le message": "Enviar mensagem",
+            "Coordonnées": "Contactos",
+            "E-mail": "E-mail",
+            "Téléphone": "Telefone",
+            "Établissement": "Instituição",
+            "Suivez-moi": "Siga-me",
+            "Discussion Rapide": "Conversa rápida",
+            "Besoin d'un renseignement ou d'une collaboration directe ?": "Precisa de uma informação ou de uma colaboração direta?",
+            "Discuter sur WhatsApp": "Falar pelo WhatsApp",
+            "Tous droits réservés.": "Todos os direitos reservados.",
+            "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.": "Mensagem enviada com sucesso! Responderei o mais brevemente possível."
+        }
+    };
+
+    const originalTexts = new WeakMap();
+    const originalAttrs = new WeakMap();
+    const translatableAttributes = ['placeholder', 'aria-label', 'title'];
+
+    function saveOriginals() {
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+            if (node.parentElement && !originalTexts.has(node)) {
+                originalTexts.set(node, node.nodeValue);
+            }
+        }
+        document.querySelectorAll('*').forEach(el => {
+            translatableAttributes.forEach(attr => {
+                if (el.hasAttribute(attr) && !originalAttrs.has(el)) {
+                    originalAttrs.set(el, {});
+                }
+                if (el.hasAttribute(attr)) {
+                    const values = originalAttrs.get(el);
+                    if (values[attr] === undefined) values[attr] = el.getAttribute(attr);
+                }
+            });
+        });
+    }
+
+    function translate(language) {
+        saveOriginals();
+        const dict = translations[language] || {};
+
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+            const original = originalTexts.get(node);
+            if (original === undefined) continue;
+            const trimmed = original.trim();
+            if (!trimmed) continue;
+            const translated = dict[trimmed] || trimmed;
+            node.nodeValue = original.replace(trimmed, translated);
+        }
+
+        document.querySelectorAll('*').forEach(el => {
+            const values = originalAttrs.get(el);
+            if (!values) return;
+            translatableAttributes.forEach(attr => {
+                if (values[attr] !== undefined) {
+                    el.setAttribute(attr, dict[values[attr]] || values[attr]);
+                }
+            });
+        });
+
+        document.documentElement.lang = language;
+        document.documentElement.dir = 'ltr';
+        localStorage.setItem('portfolio-language', language);
+    }
+
+    const savedLanguage = localStorage.getItem('portfolio-language') || 'fr';
+    languageSelect.value = savedLanguage;
+    translate(savedLanguage);
+
+    languageSelect.addEventListener('change', (event) => {
+        translate(event.target.value);
+    });
+})();
+</script>
 
 </body>
 </html>

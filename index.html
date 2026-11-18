@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,169 +32,14 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .mirrored-photo {
-            transform: scaleX(-1);
-        }
-
-        .photo-card-shadow {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
-        }
-
-        .floating-popup {
-            animation: floating 3s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        .mobile-menu {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.3s ease;
-        }
-
-        .mobile-menu.open {
-            max-height: 500px;
-            opacity: 1;
-        }
-
-        .experience-carousel {
-            overflow: hidden;
-            position: relative;
-            cursor: grab;
-            user-select: none;
-            touch-action: pan-y;
-        }
-
-        .experience-carousel:active {
-            cursor: grabbing;
-        }
-
-        .experience-carousel.dragging {
-            cursor: grabbing;
-        }
-
-        .experience-carousel.dragging .experience-track {
-            transition: none !important;
-        }
-
-        .experience-track {
-            display: flex;
-            width: max-content;
-            will-change: transform;
-        }
-
-        .experience-card {
-            flex: 0 0 390px;
-            width: 390px;
-            margin-right: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .experience-card {
-                flex: 0 0 310px;
-                width: 310px;
-            }
-        }
-
-        .project-link {
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            transform: translateX(4px);
-        }
-
-        /* ICÔNES EN BLANC EN MODE SOMBRE */
-        .dark .bg-burgundy-100 i,
-        .dark .bg-burgundy-900\/40 i {
-            color: #ffffff !important;
-        }
-
-        /* Barre de défilement */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #800020;
-            border-radius: 10px;
-        }
-
-        .dark ::-webkit-scrollbar-track {
-            background: #1f1f1f;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: #800020;
-        }
-
-        .toast {
-            transform: translateY(100px);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.4s ease;
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .whatsapp-popup {
-            opacity: 0;
-            transform: translateY(15px) scale(0.95);
-            pointer-events: none;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-popup.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
-        }
-
-        @media (max-width: 768px) {
-            .floating-popup {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-white text-gray-900 dark:bg-gray-950 dark:text-white">
 
     <!-- HEADER -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
 
         <div class="max-w-7xl mx-auto px-5">
             <div class="h-[70px] flex items-center justify-between">
@@ -201,7 +47,8 @@
                 <!-- LOGO -->
                 <a href="#accueil" class="flex items-center gap-3 font-bold text-xl text-burgundy-600 dark:text-white">
 
-                    <div class="w-11 h-11 rounded-xl bg-burgundy-600 text-white flex items-center justify-center font-bold">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-burgundy-600 text-white flex items-center justify-center font-bold">
                         SB
                     </div>
 
@@ -213,31 +60,41 @@
                 <!-- NAVIGATION DESKTOP -->
                 <nav class="hidden md:flex items-center gap-8">
 
-                    <a href="#accueil" class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">Accueil</a>
+                    <a href="#accueil"
+                        class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">Accueil</a>
 
-                    <a href="#services" class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">Services & Compétences</a>
+                    <a href="#services"
+                        class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">Services
+                        & Compétences</a>
 
-                    <a href="#experience" class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">Expérience</a>
+                    <a href="#experience"
+                        class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">Expérience</a>
 
-                    <a href="#contact" class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">Contact</a>
+                    <a href="#contact"
+                        class="text-sm font-medium hover:text-burgundy-600 dark:hover:text-burgundy-400 transition">Contact</a>
 
                     <!-- THEME -->
-                    <button id="theme-toggle" type="button" aria-label="Changer le thème" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-burgundy-100 dark:hover:bg-burgundy-900 transition">
+                    <button id="theme-toggle" type="button" aria-label="Changer le thème"
+                        class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-burgundy-100 dark:hover:bg-burgundy-900 transition">
                         <i id="theme-icon" class="fa-solid fa-moon"></i>
                     </button>
 
-                    <a href="#contact" class="px-5 py-2.5 rounded-lg bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">Me contacter</a>
+                    <a href="#contact"
+                        class="px-5 py-2.5 rounded-lg bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">Me
+                        contacter</a>
 
                 </nav>
 
                 <!-- MOBILE ACTIONS -->
                 <div class="flex items-center gap-3 md:hidden">
 
-                    <button id="mobile-theme-toggle" type="button" aria-label="Changer le thème" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                    <button id="mobile-theme-toggle" type="button" aria-label="Changer le thème"
+                        class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
                         <i id="mobile-theme-icon" class="fa-solid fa-moon"></i>
                     </button>
 
-                    <button id="menu-toggle" type="button" aria-label="Ouvrir le menu" class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                    <button id="menu-toggle" type="button" aria-label="Ouvrir le menu"
+                        class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
                         <i id="menu-icon" class="fa-solid fa-bars"></i>
                     </button>
 
@@ -252,13 +109,16 @@
 
                     <a href="#accueil" class="mobile-link py-2 font-medium hover:text-burgundy-600">Accueil</a>
 
-                    <a href="#services" class="mobile-link py-2 font-medium hover:text-burgundy-600">Services & Compétences</a>
+                    <a href="#services" class="mobile-link py-2 font-medium hover:text-burgundy-600">Services &
+                        Compétences</a>
 
                     <a href="#experience" class="mobile-link py-2 font-medium hover:text-burgundy-600">Expérience</a>
 
                     <a href="#contact" class="mobile-link py-2 font-medium hover:text-burgundy-600">Contact</a>
 
-                    <a href="#contact" class="mobile-link mt-2 text-center px-5 py-3 rounded-lg bg-burgundy-600 text-white font-semibold">Me contacter</a>
+                    <a href="#contact"
+                        class="mobile-link mt-2 text-center px-5 py-3 rounded-lg bg-burgundy-600 text-white font-semibold">Me
+                        contacter</a>
 
                 </nav>
 
@@ -279,7 +139,8 @@
                     <!-- TEXTE -->
                     <div>
 
-                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-700 dark:text-burgundy-300 text-sm font-semibold mb-6">
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-700 dark:text-burgundy-300 text-sm font-semibold mb-6">
 
                             <span class="w-2 h-2 rounded-full bg-green-500"></span>
 
@@ -309,12 +170,14 @@
 
                         <div class="mt-8 flex flex-wrap gap-4">
 
-                            <a href="#contact" class="px-6 py-3 rounded-xl bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">
+                            <a href="#contact"
+                                class="px-6 py-3 rounded-xl bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">
                                 <i class="fa-solid fa-paper-plane mr-2"></i>
                                 Me contacter
                             </a>
 
-                            <a href="#services" class="px-6 py-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-burgundy-600 hover:text-burgundy-600 dark:hover:text-burgundy-400 font-semibold transition">
+                            <a href="#services"
+                                class="px-6 py-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-burgundy-600 hover:text-burgundy-600 dark:hover:text-burgundy-400 font-semibold transition">
                                 Voir mes compétences
                             </a>
 
@@ -330,22 +193,27 @@
 
                             <div class="absolute -inset-5 rounded-[2rem] bg-burgundy-600/10 blur-2xl"></div>
 
-                            <div class="relative w-[280px] sm:w-[350px] lg:w-[420px] h-[380px] sm:h-[460px] lg:h-[520px] rounded-[2rem] overflow-hidden photo-card-shadow bg-gray-200 dark:bg-gray-800">
+                            <div
+                                class="relative w-[280px] sm:w-[350px] lg:w-[420px] h-[380px] sm:h-[460px] lg:h-[520px] rounded-[2rem] overflow-hidden photo-card-shadow bg-gray-200 dark:bg-gray-800">
 
                                 <!-- PHOTO 1 : écrans larges (à partir de 768px), en miroir -->
-                                <img src="WhatsApp Image 2026-09-23 at 11.25.29.jpeg" alt="Sidy Barham Ndao" class="mirrored-photo hidden md:block w-full h-full object-cover">
+                                <img src="WhatsApp Image 2026-09-23 at 11.25.29.jpeg" alt="Sidy Barham Ndao"
+                                    class="mirrored-photo hidden md:block w-full h-full object-cover">
 
                                 <!-- PHOTO 2 : écrans avec menu burger (moins de 768px), de face -->
-                                <img src="WhatsApp Image 2026-09-23 at 23.47.38.jpeg" alt="Sidy Barham Ndao" class="block md:hidden w-full h-full object-cover object-top">
+                                <img src="WhatsApp Image 2026-09-23 at 23.47.38.jpeg" alt="Sidy Barham Ndao"
+                                    class="block md:hidden w-full h-full object-cover object-top">
 
                             </div>
 
                             <!-- POPUP -->
-                            <div class="floating-popup absolute -bottom-5 -left-5 bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 px-5 py-4">
+                            <div
+                                class="floating-popup absolute -bottom-5 -left-5 bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 px-5 py-4">
 
                                 <div class="flex items-center gap-3">
 
-                                    <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
                                         <i class="fa-solid fa-check text-green-600"></i>
                                     </div>
 
@@ -395,9 +263,11 @@
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                     <!-- CARD 1 -->
-                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
+                    <article
+                        class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
                             <i class="fa-solid fa-code"></i>
                         </div>
 
@@ -412,9 +282,11 @@
 
 
                     <!-- CARD 2 -->
-                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
+                    <article
+                        class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
                             <i class="fa-solid fa-network-wired"></i>
                         </div>
 
@@ -429,9 +301,11 @@
 
 
                     <!-- CARD 3 -->
-                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
+                    <article
+                        class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
                             <i class="fa-brands fa-figma"></i>
                         </div>
 
@@ -446,9 +320,11 @@
 
 
                     <!-- CARD 4 -->
-                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
+                    <article
+                        class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
                             <i class="fa-solid fa-pen-nib"></i>
                         </div>
 
@@ -463,9 +339,11 @@
 
 
                     <!-- CARD 5 -->
-                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
+                    <article
+                        class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
                             <i class="fa-solid fa-terminal"></i>
                         </div>
 
@@ -480,9 +358,11 @@
 
 
                     <!-- CARD 6 -->
-                    <article class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
+                    <article
+                        class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition">
 
-                        <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-5">
                             <i class="fa-brands fa-wordpress"></i>
                         </div>
 
@@ -511,7 +391,8 @@
 
                     <div>
 
-                        <span class="text-burgundy-600 dark:text-burgundy-400 font-bold text-sm uppercase tracking-wider">
+                        <span
+                            class="text-burgundy-600 dark:text-burgundy-400 font-bold text-sm uppercase tracking-wider">
                             Parcours & projets
                         </span>
 
@@ -529,11 +410,13 @@
                     <!-- BOUTONS -->
                     <div class="flex gap-3">
 
-                        <button id="experience-prev" type="button" aria-label="Projet précédent" class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-burgundy-600 hover:text-white hover:border-burgundy-600 transition">
+                        <button id="experience-prev" type="button" aria-label="Projet précédent"
+                            class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-burgundy-600 hover:text-white hover:border-burgundy-600 transition">
                             <i class="fa-solid fa-arrow-left"></i>
                         </button>
 
-                        <button id="experience-next" type="button" aria-label="Projet suivant" class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-burgundy-600 hover:text-white hover:border-burgundy-600 transition">
+                        <button id="experience-next" type="button" aria-label="Projet suivant"
+                            class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-burgundy-600 hover:text-white hover:border-burgundy-600 transition">
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
 
@@ -549,13 +432,16 @@
 
 
                         <!-- CARD 1 -->
-                        <article class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <article
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </div>
 
-                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Formation</span>
+                            <span
+                                class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Formation</span>
 
                             <h3 class="mt-2 text-2xl font-bold">Licence 1 en Génie Logiciel</h3>
 
@@ -569,13 +455,16 @@
 
 
                         <!-- CARD 2 -->
-                        <article class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <article
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
                                 <i class="fa-solid fa-dumbbell"></i>
                             </div>
 
-                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet Web</span>
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet
+                                Web</span>
 
                             <h3 class="mt-2 text-2xl font-bold">SUNUGAL SPORT 221</h3>
 
@@ -585,7 +474,8 @@
                                 programmes, tarifs, coachs et contact.
                             </p>
 
-                            <a href="https://sunugal-sport-eslp.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+                            <a href="https://sunugal-sport-eslp.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
                                 Voir le projet
                                 <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                             </a>
@@ -594,13 +484,16 @@
 
 
                         <!-- CARD 3 -->
-                        <article class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <article
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
                                 <i class="fa-solid fa-paw"></i>
                             </div>
 
-                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet Web</span>
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet
+                                Web</span>
 
                             <h3 class="mt-2 text-2xl font-bold">PAWS AND BYTES</h3>
 
@@ -610,7 +503,9 @@
                                 pour présenter les différents contenus.
                             </p>
 
-                            <a href="https://dev-bytes-et-bytes.pantheonsite.io/" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+                            <a href="https://dev-bytes-et-bytes.pantheonsite.io/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
                                 Voir le projet
                                 <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                             </a>
@@ -619,13 +514,16 @@
 
 
                         <!-- CARD 4 HOTEL TERANGA -->
-                        <article class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <article
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
                                 <i class="fa-solid fa-hotel"></i>
                             </div>
 
-                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet Web</span>
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet
+                                Web</span>
 
                             <h3 class="mt-2 text-2xl font-bold">HOTEL TERANGA</h3>
 
@@ -635,7 +533,9 @@
                                 à travers une interface moderne.
                             </p>
 
-                            <a href="https://dev-senegal-charme-hotel.pantheonsite.io/?preview_id=13&preview_nonce=aeab54e338&preview=true" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+                            <a href="https://dev-senegal-charme-hotel.pantheonsite.io/?preview_id=13&preview_nonce=aeab54e338&preview=true"
+                                target="_blank" rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
                                 Voir le projet
                                 <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                             </a>
@@ -646,13 +546,16 @@
                         <!-- DUPLICATION POUR CAROUSEL INFINI -->
 
                         <!-- DUPLICATE 1 -->
-                        <article aria-hidden="true" class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <article aria-hidden="true"
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </div>
 
-                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Formation</span>
+                            <span
+                                class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Formation</span>
 
                             <h3 class="mt-2 text-2xl font-bold">Licence 1 en Génie Logiciel</h3>
 
@@ -666,13 +569,16 @@
 
 
                         <!-- DUPLICATE 2 -->
-                        <article aria-hidden="true" class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <article aria-hidden="true"
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
                                 <i class="fa-solid fa-dumbbell"></i>
                             </div>
 
-                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet Web</span>
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet
+                                Web</span>
 
                             <h3 class="mt-2 text-2xl font-bold">SUNUGAL SPORT 221</h3>
 
@@ -681,7 +587,9 @@
                                 une salle de sport.
                             </p>
 
-                            <a tabindex="-1" href="https://sunugal-sport-eslp.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+                            <a tabindex="-1" href="https://sunugal-sport-eslp.vercel.app/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
                                 Voir le projet
                                 <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                             </a>
@@ -690,13 +598,16 @@
 
 
                         <!-- DUPLICATE 3 -->
-                        <article aria-hidden="true" class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <article aria-hidden="true"
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
                                 <i class="fa-solid fa-paw"></i>
                             </div>
 
-                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet Web</span>
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet
+                                Web</span>
 
                             <h3 class="mt-2 text-2xl font-bold">PAWS AND BYTES</h3>
 
@@ -705,7 +616,9 @@
                                 numérique.
                             </p>
 
-                            <a tabindex="-1" href="https://dev-bytes-et-bytes.pantheonsite.io/" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+                            <a tabindex="-1" href="https://dev-bytes-et-bytes.pantheonsite.io/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
                                 Voir le projet
                                 <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                             </a>
@@ -714,13 +627,16 @@
 
 
                         <!-- DUPLICATE 4 HOTEL TERANGA -->
-                        <article aria-hidden="true" class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
+                        <article aria-hidden="true"
+                            class="experience-card bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-800 shadow-sm">
 
-                            <div class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-2xl mb-6">
                                 <i class="fa-solid fa-hotel"></i>
                             </div>
 
-                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet Web</span>
+                            <span class="text-sm font-semibold text-burgundy-600 dark:text-burgundy-400">Projet
+                                Web</span>
 
                             <h3 class="mt-2 text-2xl font-bold">HOTEL TERANGA</h3>
 
@@ -729,7 +645,10 @@
                                 l'hôtel et ses services.
                             </p>
 
-                            <a tabindex="-1" href="https://dev-senegal-charme-hotel.pantheonsite.io/?preview_id=13&preview_nonce=aeab54e338&preview=true" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
+                            <a tabindex="-1"
+                                href="https://dev-senegal-charme-hotel.pantheonsite.io/?preview_id=13&preview_nonce=aeab54e338&preview=true"
+                                target="_blank" rel="noopener noreferrer"
+                                class="project-link inline-flex items-center gap-2 mt-6 text-burgundy-600 dark:text-burgundy-400 font-semibold">
                                 Voir le projet
                                 <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                             </a>
@@ -739,7 +658,7 @@
                     </div>
                 </div>
 
-               
+
 
             </div>
 
@@ -775,41 +694,50 @@
                     <div class="space-y-5">
 
                         <!-- EMAIL -->
-                        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                        <div
+                            class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
 
-                            <div class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
+                            <div
+                                class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
 
                             <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">E-mail</p>
 
-                                <a href="mailto:ibrahimandao2006@gmail.com" class="font-semibold hover:text-burgundy-600 dark:hover:text-burgundy-400 break-all">ibrahimandao2006@gmail.com</a>
+                                <a href="mailto:ibrahimandao2006@gmail.com"
+                                    class="font-semibold hover:text-burgundy-600 dark:hover:text-burgundy-400 break-all">ibrahimandao2006@gmail.com</a>
                             </div>
 
                         </div>
 
 
                         <!-- TELEPHONE -->
-                        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                        <div
+                            class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
 
-                            <div class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
+                            <div
+                                class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
 
                             <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Téléphone</p>
 
-                                <a href="tel:+221763324012" class="font-semibold hover:text-burgundy-600 dark:hover:text-burgundy-400">+221 76 332 40 12</a>
+                                <a href="tel:+221763324012"
+                                    class="font-semibold hover:text-burgundy-600 dark:hover:text-burgundy-400">+221 76
+                                    332 40 12</a>
                             </div>
 
                         </div>
 
 
                         <!-- FORMATION -->
-                        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                        <div
+                            class="flex items-center gap-5 p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
 
-                            <div class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
+                            <div
+                                class="w-14 h-14 shrink-0 rounded-xl bg-burgundy-100 dark:bg-burgundy-900/40 text-burgundy-600 dark:text-burgundy-400 flex items-center justify-center text-xl">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </div>
 
@@ -825,11 +753,13 @@
                         <!-- RESEAUX -->
                         <div class="flex gap-3 pt-3">
 
-                            <a href="#" aria-label="LinkedIn" class="w-11 h-11 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-center hover:bg-burgundy-600 hover:text-white transition">
+                            <a href="#" aria-label="LinkedIn"
+                                class="w-11 h-11 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-center hover:bg-burgundy-600 hover:text-white transition">
                                 <i class="fa-brands fa-linkedin-in"></i>
                             </a>
 
-                            <a href="#" aria-label="GitHub" class="w-11 h-11 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-center hover:bg-burgundy-600 hover:text-white transition">
+                            <a href="#" aria-label="GitHub"
+                                class="w-11 h-11 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 flex items-center justify-center hover:bg-burgundy-600 hover:text-white transition">
                                 <i class="fa-brands fa-github"></i>
                             </a>
 
@@ -839,11 +769,13 @@
 
 
                     <!-- FORMULAIRE -->
-                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate class="bg-white dark:bg-gray-900 rounded-2xl p-7 sm:p-8 border border-gray-200 dark:border-gray-800">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate
+                        class="bg-white dark:bg-gray-900 rounded-2xl p-7 sm:p-8 border border-gray-200 dark:border-gray-800">
 
                         <input type="hidden" name="access_key" value="3e26ace8-35d4-430a-aedd-dd2e945a971d">
 
-                        <input type="hidden" name="subject" Value="Nouveau message depuis le portfolio de Sidy Barham Ndao">
+                        <input type="hidden" name="subject"
+                            Value="Nouveau message depuis le portfolio de Sidy Barham Ndao">
 
                         <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
 
@@ -853,7 +785,10 @@
 
                                 <label for="name" class="block text-sm font-semibold mb-2">Nom</label>
 
-                                <input id="name" name="name" type="text" required minlength="2" maxlength="80" autocomplete="name" pattern="[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,80}" class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20" placeholder="Votre nom">
+                                <input id="name" name="name" type="text" required minlength="2" maxlength="80"
+                                    autocomplete="name" pattern="[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,80}"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20"
+                                    placeholder="Votre nom">
 
                             </div>
 
@@ -862,7 +797,10 @@
 
                                 <label for="email" class="block text-sm font-semibold mb-2">E-mail</label>
 
-                                <input id="email" name="email" type="email" required maxlength="120" autocomplete="email" class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20" placeholder="votre@email.com">
+                                <input id="email" name="email" type="email" required maxlength="120"
+                                    autocomplete="email"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20"
+                                    placeholder="votre@email.com">
 
                             </div>
 
@@ -871,14 +809,18 @@
 
                                 <label for="message" class="block text-sm font-semibold mb-2">Message</label>
 
-                                <textarea id="message" name="message" required minlength="10" maxlength="2000" rows="6" autocomplete="off" class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20 resize-y" placeholder="Écrivez votre message..."></textarea>
+                                <textarea id="message" name="message" required minlength="10" maxlength="2000" rows="6"
+                                    autocomplete="off"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 outline-none focus:border-burgundy-600 focus:ring-2 focus:ring-burgundy-600/20 resize-y"
+                                    placeholder="Écrivez votre message..."></textarea>
 
                             </div>
 
                         </div>
 
 
-                        <button type="submit" id="submit-button" class="mt-6 w-full px-6 py-3.5 rounded-xl bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">
+                        <button type="submit" id="submit-button"
+                            class="mt-6 w-full px-6 py-3.5 rounded-xl bg-burgundy-600 hover:bg-burgundy-700 text-white font-semibold transition">
 
                             <span id="submit-text">Envoyer le message</span>
 
@@ -900,18 +842,22 @@
     <!-- WHATSAPP -->
     <div class="fixed bottom-5 right-5 z-50">
 
-        <div id="whatsapp-popup" class="whatsapp-popup absolute bottom-16 right-0 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-xl p-4">
+        <div id="whatsapp-popup"
+            class="whatsapp-popup absolute bottom-16 right-0 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-xl p-4">
 
             <p class="font-bold mb-1">Besoin de me contacter ?</p>
 
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Écrivez-moi directement sur WhatsApp.</p>
 
-            <a href="https://wa.me/221763324012" target="_blank" rel="noopener noreferrer" class="block text-center bg-green-600 hover:bg-green-700 text-white rounded-xl py-2.5 font-semibold">Ouvrir WhatsApp</a>
+            <a href="https://wa.me/221763324012" target="_blank" rel="noopener noreferrer"
+                class="block text-center bg-green-600 hover:bg-green-700 text-white rounded-xl py-2.5 font-semibold">Ouvrir
+                WhatsApp</a>
 
         </div>
 
 
-        <button id="whatsapp-button" type="button" aria-label="WhatsApp" class="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white text-2xl shadow-xl flex items-center justify-center transition">
+        <button id="whatsapp-button" type="button" aria-label="WhatsApp"
+            class="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white text-2xl shadow-xl flex items-center justify-center transition">
             <i class="fa-brands fa-whatsapp"></i>
         </button>
 
@@ -921,7 +867,8 @@
     <!-- TOAST -->
     <div id="toast" class="toast fixed bottom-5 left-1/2 -translate-x-1/2 z-[100]">
 
-        <div id="toast-content" class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-5 py-3 rounded-xl shadow-xl text-sm font-semibold">
+        <div id="toast-content"
+            class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-5 py-3 rounded-xl shadow-xl text-sm font-semibold">
             Message
         </div>
 
@@ -950,4 +897,5 @@
     <script src="script.js"> </script>
 
 </body>
+
 </html>

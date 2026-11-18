@@ -1,0 +1,155 @@
+   * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .mirrored-photo {
+            transform: scaleX(-1);
+        }
+
+        .photo-card-shadow {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+        }
+
+        .floating-popup {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .experience-carousel {
+            overflow: hidden;
+            position: relative;
+            cursor: grab;
+            user-select: none;
+            touch-action: pan-y;
+        }
+
+        .experience-carousel:active {
+            cursor: grabbing;
+        }
+
+        .experience-carousel.dragging {
+            cursor: grabbing;
+        }
+
+        .experience-carousel.dragging .experience-track {
+            transition: none !important;
+        }
+
+        .experience-track {
+            display: flex;
+            width: max-content;
+            will-change: transform;
+        }
+
+        .experience-card {
+            flex: 0 0 390px;
+            width: 390px;
+            margin-right: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .experience-card {
+                flex: 0 0 310px;
+                width: 310px;
+            }
+        }
+
+        .project-link {
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(4px);
+        }
+
+        /* ICÔNES EN BLANC EN MODE SOMBRE */
+        .dark .bg-burgundy-100 i,
+        .dark .bg-burgundy-900\/40 i {
+            color: #ffffff !important;
+        }
+
+        /* Barre de défilement */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #800020;
+            border-radius: 10px;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #1f1f1f;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #800020;
+        }
+
+        .toast {
+            transform: translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .whatsapp-popup {
+            opacity: 0;
+            transform: translateY(15px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-popup.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        @media (max-width: 768px) {
+            .floating-popup {
+                display: none;
+            }
+        }
